@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Tiết kiệm online</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href=""><i class="fab fa-youtube mr-2"></i>Các gói tiết kiệm</a>
+        </li>
+      </ul>
+    </div>
+    <form action="/search" method="get">
+      <div class="input-group size-search">
+        <input type="text" name="q" class="form-control" id="search-input" placeholder="Tìm kiếm ...">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </form>
+    <div class="ml-4">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a href="/users/sign-in" class="nav-link">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+          <a href="/users/sign-up" class="nav-link">Đăng ký</a>
+        </li>
+      </ul>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="https://avatar-redirect.appspot.com/google/109023826614717592641?size=400" alt=""
+              class="user-avatar">
+            Project A
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/users/profile">Thông tin tài khoản</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/me/stored/mess">Tin nhắn</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Đăng xuất</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
