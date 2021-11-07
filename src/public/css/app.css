@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+.card-course-item {
+  margin-top: 16px; }
+
+.checkbox-option {
+  width: 140px;
+  margin: 0 16px; }
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 4px; }
+
+.account {
+  margin-left: 250px; }
+
+.icon-logo {
+  width: 200px;
+  height: 60px; }
+
+.img-slider {
+  width: 100%; }
+
+.form-signin {
+  display: flex;
+  background-color: #008c45;
+  height: 585px; }
+
+.form-signin-item {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 673px;
+  height: 350px;
+  padding: 36px;
+  background-color: #fff; }
+
+.form-signup {
+  display: flex;
+  background-color: #008c45;
+  height: 585px; }
+
+.form-signup-item {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 673px;
+  height: 550px;
+  padding: 36px;
+  background-color: #fff; }

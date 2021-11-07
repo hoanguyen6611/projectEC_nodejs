@@ -1,28 +1,35 @@
-const path =require('path');
+const path = require('path');
 const express = require('express');
-const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const app = express();
-const port = process.env.PORT || 3000;
-const router = require('./routers');
-//const db = require('./config/db');
-//db.connect();
-app.use(express.static(path.join(__dirname,'public')));
-app.use (
+// const port = process.env.PORT || 3000;
+const port = 3000;
+const route = require('./routers');
+// const methodOverride = require('method-override');
+// const session = require('express-session');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(
     express.urlencoded({
-        extended:true,
-    })
+        extended: true,
+    }),
 );
+// app.use(methodOverride('_method'));
 app.use(express.json());
+// Handlers template engine
 app.engine(
     'hbs',
     handlebars({
-        extname: '.hbs'
-    })
+        extname: '.hbs',
+        helpers: {
+            sum: (a, b) => a + b,
+        }
+    }),
 );
+// app.use(SortMiddleware);
 app.set('view engine', 'hbs');
-app.set('view',path.join(__dirname,'resources','views'));
-router(app);
-app.listen(port,()=>{
+app.set('views', path.join(__dirname, 'resources', 'views'));
+// route init
+route(app);
+app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });
