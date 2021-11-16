@@ -1,0 +1,15 @@
+- Download MongoDB: https://www.mongodb.com/try/download/community
+- Set môi trường cho mongoDB:
+  + Chuột phải vào biểu tượng computer hoặc vào computer và click chuột phải -> chọn Properites
+  + Chọn mục ‘Advanced system settings’
+  + Chọn tab ‘Advanced’ và click ‘Enviroment Variables’
+  + Thêm thư mục bin của MongoDB vào path (Mục bin thường ở trong C:\Program Files\MongoDB\Server\5.0\bin)
+* Tham khảo: https://stackjava.com/mongodb/huong-dan-cai-dat-cau-hinh-mongodb-tren-windows-10.html
+
+- Kết nối với db với driver node.js:
+mongodb+srv://tuananh:tuananh123@cluster0.wflbo.mongodb.net/dbEC?retryWrites=true&w=majority
+
+- link hướng dẫn dùng kết nối:
+https://www.youtube.com/watch?v=ZeViGe2NlB8
+
+Note: có thể xem từ phút 8:43
