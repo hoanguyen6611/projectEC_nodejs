@@ -40,6 +40,8 @@ class AccountController {
 
     //[POST]/users/checkLogin 
     checkLogin(req, res, next){
+        Account.findOne({account : req.body.userName, password : req.body.password})
+            .then()
         res.render('home');
     }
 }
