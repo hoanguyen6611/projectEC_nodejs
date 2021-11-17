@@ -1,4 +1,6 @@
-class UserController {
+const Account = require('../models/account')
+
+class AccountController {
     //[GET]/users/signin
     signIn(req, res, next) {
         res.render('user/signin');
@@ -35,6 +37,11 @@ class UserController {
     accountSaveMe(req, res, next) {
         res.render('user/accountsaveme');
     }
+
+    //[POST]/users/checkLogin 
+    checkLogin(req, res, next){
+        res.render('home');
+    }
 }
 //Public ra ngoài
-module.exports = new UserController();
+module.exports = new AccountController();

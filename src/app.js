@@ -2,11 +2,15 @@ const path = require('path');
 const express = require('express');
 const handlebars = require('express-handlebars');
 const app = express();
-// const port = process.env.PORT || 3000;
+
 const port = 3000;
 const route = require('./routers');
-// const methodOverride = require('method-override');
-// const session = require('express-session');
+
+const db = require('./config/db');
+
+//Connect to db : 
+db.connect()
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
     express.urlencoded({
