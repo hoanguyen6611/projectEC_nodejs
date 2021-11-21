@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "61977307a599b6db2d515e64"
+  },
+  "tenKH": "Tat Tan Chu",
+  "tenTK": "tatchu6878",
+  "email": "tatchu6878@gmail.com",
+  "ngaySinh": "09/01/2001",
+  "CCCD": "07920100658",
+  "password": "1",
+  "account": "6194c1ca70f5e2377f107ca4",
+  "soTK": "194567162"
+},{
+  "_id": {
+    "$oid": "6199130acce0afbd73ed72ef"
+  },
+  "tenTK": "tatchu7890",
+  "password": "1234",
+  "__v": 0
+}]
