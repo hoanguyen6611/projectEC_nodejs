@@ -3,19 +3,18 @@
         <div class="text-center">
             <img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636260329/249000531_905697440068131_6669106597424658124_n_fbahjd.jpg" alt="" class="icon-logo">
         </div>
-        <form method="post" class="mt-4">
+        <form method="post" class="mt-4" action = '/customer/inputSignUp'>
             <div class="form-group">
                 <label for="exampleInputEmail1">Tên đăng nhập</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Username">
+                <input type="text" name = "userName" class="form-control"  placeholder="Tên đăng nhập">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Mật khẩu</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+                <input type="password" name = "password_1" class="form-control" placeholder="Mật khẩu">
             </div>
              <div class="form-group">
                 <label for="exampleInputEmail1">Xác nhận mật khẩu</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mật khẩu">
+                <input type="password" name = "password_2" class="form-control" placeholder="Nhập lại mật khẩu">
             </div>
             <button type="submit" class="btn btn-primary">Tạo tài khoản</button>
             <a href="#" class="nav-link">Quên tài khoản/mật khẩu?</a>

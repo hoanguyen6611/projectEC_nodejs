@@ -14,6 +14,7 @@
     </div>
     <div class="account">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{#if lcIsAuthenticated}}
         <li class="nav-item">
           <a href="#" class="nav-link"><img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636773689/3643769_building_home_house_main_menu_icon_aslqav.png" class="icon mr-2">Trang chủ</a>
         </li>
@@ -29,15 +30,19 @@
          <li class="nav-item">
           <a href="/users/transhis" class="nav-link"><img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636774198/352426_history_icon_hmtqo2.png" class="icon mr-2">Lịch sử</a>
         </li>
+        {{else}}
         <li class="nav-item">
-          <a href="/users/signin" class="nav-link">Đăng nhập</a>
+          <a href="/customer/signIn" class="nav-link">Đăng nhập</a>
         </li>
         <li class="nav-item">
-          <a href="/users/signup" class=" btn btn-success">Đăng ký tài khoản</a>
+          <a href="/customer/signUp" class=" btn btn-success">Đăng ký tài khoản</a>
         </li>
+        {{/if}}
       </ul>
     </div>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {{#if lcIsCustomer}}
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -54,6 +59,8 @@
           </div>
         </li>
       </ul>
+      {{else}}
+  {{/if}}
     </div>
   </div>
 </nav>

@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const handlebars = require('express-handlebars');
+const session = require('./middleware/session.mdw');
 const app = express();
 
 const port = 3000;
@@ -11,14 +12,19 @@ const db = require('./config/db');
 //Connect to db : 
 db.connect()
 
+//create session : 
+session(app)
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(
     express.urlencoded({
         extended: true,
     }),
 );
+
 // app.use(methodOverride('_method'));
 app.use(express.json());
+
 // Handlers template engine
 app.engine(
     'hbs',
@@ -29,9 +35,13 @@ app.engine(
         }
     }),
 );
+
 // app.use(SortMiddleware);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
+
+require('./middleware/local.mdw');
+
 // route init
 route(app);
 app.listen(port, () => {

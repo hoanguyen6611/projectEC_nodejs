@@ -5,14 +5,16 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/app.js",
+    "start": "nodemon src/index.js",
     "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
+    "express-session": "^1.17.2",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "mongoose": "^6.0.13",
