@@ -6,6 +6,7 @@ const restrict = require('../middleware/auth.mdw');
 router.get('/signIn', CustomerController.signIn);
 router.get('/signUp', CustomerController.signUp); 
 router.post('/inputSignUp', CustomerController.inputSignUp)
+router.put('/:id', CustomerController.addProfile);
 router.get('/countMe', CustomerController.showInfomation);
 router.post('/checkLogin', CustomerController.checkLogin);
 

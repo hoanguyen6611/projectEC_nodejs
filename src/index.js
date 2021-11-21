@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const handlebars = require('express-handlebars');
+const methodOverride = require('method-override');
 const session = require('./middleware/session.mdw');
 const app = express();
 
@@ -24,6 +25,9 @@ app.use(
 
 // app.use(methodOverride('_method'));
 app.use(express.json());
+
+//override lại để có thể sài phương thức PUT 
+app.use(methodOverride('_method'))
 
 // Handlers template engine
 app.engine(

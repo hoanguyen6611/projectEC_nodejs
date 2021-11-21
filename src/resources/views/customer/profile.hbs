@@ -6,37 +6,31 @@
         </div>
         <i class="fas fa-user-plus"></i>
         <h3 class="text-color">Bổ sung thông tin</h3>
-        <form method="post" class="mt-4">
+        <form method="post" class="mt-4" action = "/customer/{{customer._id}}?_method=PUT">
+
+            <input type="hidden" class="form-control label-text"  name = "id" value = "{{customer._id}}">
+
             <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">Họ và tên:</label>
-                <input type="text" class="form-control label-text" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="full name">
+                <label class="label-name">Họ và tên:</label>
+                <input type="text" class="form-control label-text"  name = "tenKH" placeholder="Nhập họ tên của bạn" value = "{{customer.tenKH}}">
             </div>
             <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">Ngày sinh:</label>
-                <input type="text" class="form-control label-text" id="exampleInputPassword1" placeholder="Date">
+                <label class="label-name">Ngày sinh:</label>
+                <input type="text" class="form-control label-text" name = "ngaySinh" placeholder="Nhập ngày sinh của bạn" value = "{{customer.ngaySinh}}">
             </div>
             <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">Giới tính:</label>
-                <input type="text" class="form-control label-text" id="exampleInputPassword1" placeholder="Sex">
+                <label class="label-name">CMND/CCCD:</label>
+                <input type="text" class="form-control label-text" name = "CCCD" placeholder="Nhập CCCD của bạn" value = "{{customer.CCCD}}">
             </div>
             <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">CMND/CCCD:</label>
-                <input type="text" class="form-control label-text" id="exampleInputPassword1" placeholder="ID">
+                <label class="label-name">Email:</label>
+                <input type="email" class="form-control label-text" name = "email" placeholder="Nhập email của bạn" value = "{{customer.email}}">
             </div>
             <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">Số điện thoại:</label>
-                <input type="text" class="form-control label-text" id="exampleInputPassword1" placeholder="Phone">
+                <label class="label-name">Số tài khoản ngân hàng:</label>
+                <input type="text" class="form-control label-text" name = "soTK" placeholder="Nhập số tài khoản ngân hàng" value = "{{customer.soTK}}">
             </div>
-            <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">Email:</label>
-                <input type="text" class="form-control label-text" id="exampleInputPassword1" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label class="label-name" for="exampleInputEmail1">Địa chỉ:</label>
-                <input type="text" class="form-control label-text" id="exampleInputPassword1" placeholder="Address">
-            </div>
-            <button type="submit" class="btn btn-primary">Tiếp tục</button>
+           <button type="submit" class="btn btn-primary">Hoàn thành</button>
         </form>
     </div>
 </div>
