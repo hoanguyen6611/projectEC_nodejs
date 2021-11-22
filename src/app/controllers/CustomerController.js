@@ -36,13 +36,13 @@ class CustomerController {
                 if (password_2 != null && password_1 === password_2 && password_1 != null){
                     Customer.create({
                         tenTK : username, 
-                        password : password_1
+                        password : password_1,
+                        account : null,
                     }).then(function(){
                         Customer.findOne({
                             tenTK : req.body.userName
                         })
                         .then(function(customer){
-                            console.log('id', customer._id);
                             res.render('customer/profile', {customer : mongooseToObject(customer)});
                         })
                     })
@@ -54,11 +54,35 @@ class CustomerController {
         })
     }
 
+    //[POST] : customer/setAccount : 
+    setAccount(req, res, next){
+       
+    }
+
     //[POST] : customer/:id : 
     addProfile(req, res, next){
         Customer.updateOne({_id: req.params.id}, req.body)
         .then(function(){
             Customer.findById(req.params.id)
+            .then(function(customer){
+                Account.findOne({
+                    soTK : customer.soTK
+                })
+                .then(function(account){
+                        if (account != null){
+                            console.log(account._id);
+                            console.log('ID : ', req.params.id)
+                            Customer.findByIdAndUpdate({_id: req.params.id}, 
+                            {
+                                account : account._id
+                            })
+                            .then(function(customer) {
+                                console.log(customer)
+                            })
+                        }
+                        
+                    })
+            })
             .then(function(customer){
                 req.session.isAuthenticated = true; 
                 req.session.isCustomer = customer; 
