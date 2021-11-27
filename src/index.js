@@ -2,8 +2,13 @@ const path = require('path');
 const express = require('express');
 const handlebars = require('express-handlebars');
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const session = require('./middleware/session.mdw');
+
 const app = express();
+
+app.use(cookieParser())
 
 const port = 3000;
 const route = require('./routers');
@@ -16,14 +21,18 @@ db.connect()
 //create session : 
 session(app)
 
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(bodyParser.json())
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(
     express.urlencoded({
         extended: true,
     }),
 );
 
-// app.use(methodOverride('_method'));
 app.use(express.json());
 
 //override lại để có thể sài phương thức PUT 
@@ -44,10 +53,9 @@ app.engine(
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
-require('./middleware/local.mdw');
-
 // route init
 route(app);
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
 });

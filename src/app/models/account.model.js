@@ -7,7 +7,7 @@ mongoose.plugin(slug)
 const Schema = mongoose.Schema 
 
 const accountSchema = new Schema({
-    soDu :   {type : String, maxlength : 255, required : true}, 
+    soDu :   {type : Number, maxlength : 255, required : true}, 
     soTK :   {type : String, maxlength : 255, required : true}
 }, {
     collection : 'Account'

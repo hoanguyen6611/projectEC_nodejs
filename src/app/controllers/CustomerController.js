@@ -2,6 +2,8 @@ const Customer = require('../models/customer.model')
 const Account = require('../models/account.model')
 const { response } = require('express')
 const { mongooseToObject } = require('../../routers/utils/mongoose')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 class CustomerController {
     
@@ -71,16 +73,9 @@ class CustomerController {
                 .then(function(account){
                         if (account != null){
                             console.log(account._id);
-                            console.log('ID : ', req.params.id)
-                            Customer.findByIdAndUpdate({_id: req.params.id}, 
-                            {
-                                account : account._id
-                            })
-                            .then(function(customer) {
-                                console.log(customer)
-                            })
+                            customer.account = account._id;
+                            customer.save();
                         }
-                        
                     })
             })
             .then(function(customer){
@@ -102,14 +97,11 @@ class CustomerController {
         .populate('account')
         .then(function(customer){
             if(customer != null){
-                console.log('data', customer);
-
-                delete customer.password;
-                req.session.isAuthenticated = true; 
-                req.session.isCustomer = customer; 
-
-                console.log('data', req.session.isCustomer);
-
+                const token = jwt.sign({
+                    _id : customer._id
+                }, process.env.ACCESS_TOKEN_SECRET)
+                var tenTK = customer.tenTK + "/"
+                res.cookie('token', tenTK + token, { expires: new Date(Date.now() + 24 * 3600000)});
                 res.render('home');
             }
         }).catch(next)
