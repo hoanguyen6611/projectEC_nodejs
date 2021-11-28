@@ -9,6 +9,7 @@
         <br>
         <br>
         <h4 class="endow">Sổ tiết kiệm của bạn :</h4>
+        {{#if passbooks}}
         {{#each passbooks}}
         <div class="accountsavebank-item inline-block bg-success">
             <h5 class="text-color">Loại sổ : {{this.term.tenGoiTietKiem}}</h5>
@@ -17,6 +18,11 @@
             <h5>Ngày đáo hạn : {{this.ngayDaoHan}}</h5>
         </div>
         {{/each}}
+        {{else}}
+        <div class="accountsavebank-item inline-block bg-success">
+            <h5>BẠN HIỆN CHƯA CÓ KỲ HẠN NÀO !</h5>
+        </div>
+        {{/if}}
         {{/if}}
 
     </div>
