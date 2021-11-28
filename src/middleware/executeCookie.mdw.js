@@ -12,7 +12,7 @@ module.exports = function(req, stringQuery){
         });
 
         if (singleCookie['token']){
-            var valueIndexInCookie = singleCookie['token'].split('%2'); 
+            var valueIndexInCookie = singleCookie['token'].split('%2F'); 
             if (stringQuery == 'getToken'){
                 return valueIndexInCookie[1];
             }

@@ -1,16 +1,23 @@
 <div class="v1">
     <div class="accountsavebank ">
+        {{#if soTK}}
         <h4 class="endow">Tài khoản thanh toán</h4>
         <div class="accountsavebank-item inline-block">
-            <h5 class="text-color">Tài khoản hiện tại: 012546684</h5>
-            <h5>Số dư khả dụng:</h5>
+            <h5 class="text-color">Tài khoản hiện tại: {{soTK}}</h5>
+            <h5>Số dư khả dụng: {{soDu}} VNĐ</h5>
         </div>
         <br>
-        <h4 class="endow">Tài khoản tiết kiệm</h4>
+        <br>
+        <h4 class="endow">Sổ tiết kiệm của bạn :</h4>
+        {{#each passbooks}}
         <div class="accountsavebank-item inline-block bg-success">
-            <h5 class="text-color">ID: 012546684</h5>
-            <h5>Số tiền tiết kiệm:</h5>
+            <h5 class="text-color">Loại sổ : {{this.term.tenGoiTietKiem}}</h5>
+            <h5>Số tiền tiết kiệm: {{this.soTienGui}} VNĐ</h5>
+            <h5>Kỳ hạn : {{this.interestRate.kyHan}}</h5>
+            <h5>Ngày đáo hạn : {{this.ngayDaoHan}}</h5>
         </div>
+        {{/each}}
+        {{/if}}
 
     </div>
 </div>

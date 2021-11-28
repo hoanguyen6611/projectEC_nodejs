@@ -1,8 +1,13 @@
 const Customer = require('../models/customer.model')
 const Account = require('../models/account.model')
+const Passbook = require('../models/passbook.model')
+const interestRate = require('../models/interestRate.model')
+const Term = require('../models/term.model')
 const { response } = require('express')
 const { mongooseToObject } = require('../../routers/utils/mongoose')
+const executeCookie = require('../../middleware/executeCookie.mdw')
 const jwt = require('jsonwebtoken')
+const {mutipleMongooseToObject} = require('../../routers/utils/mongoose')
 require('dotenv').config()
 
 class CustomerController {
@@ -88,7 +93,7 @@ class CustomerController {
         .catch(next)
     }
 
-    //[POST] : customer/checkLogin :
+    //[POST] : customer/checkLogin : Nếu đăng nhập thành công 
     checkLogin(req, res, next){
         Customer.findOne({
             tenTK : req.body.userName, 
@@ -105,6 +110,35 @@ class CustomerController {
                 res.render('home');
             }
         }).catch(next)
+    }
+
+    //[GET] : customer/myAccount : Hiển thị thông tin tài khoản 
+    myAccount(req, res, next){
+       const token = executeCookie(req, 'getToken'); 
+       const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+       Customer.findById({
+           _id : decodeToken._id 
+       })
+       .populate('account')
+       .then(function(customer){
+            var cus_Info = customer; 
+            Passbook.find({
+                customer : customer._id
+            })
+            .populate('term')
+            .populate('interestRate')
+            .populate('customer')
+            .then(
+                function(passbook){
+                    console.log(passbook);
+                    res.render('customer/accountsavebank', 
+                    {soTK : cus_Info.soTK, 
+                     soDu : cus_Info.account.soDu,
+                     passbooks : mutipleMongooseToObject(passbook),
+                    })
+                }
+            )
+       })
     }
 }
 //Public ra ngoài
