@@ -1,31 +1,34 @@
 <div class="v1">
     <div class="accountsavebank ">
-        {{#if soTK}}
         <div class="accountsavebank-item inline-block">
             <h5 class="text-color">Tài khoản nguồn</h5>
-            <h5>{{soTK}}</h5>
-            <h5 class="text-color">Số dư khả dụng</h5>
-            <h5>{{soDu}} VNĐ</h5>
+            <h5>012546684</h5>
         </div>
         <br>
         <div class="accountsavebank-item inline-block bg-success mt-4">
-            <h5>Vui lòng chọn kỳ hạn muốn gửi :</h5>
             <select class="custom-select" id="inputGroupSelect01">
                 <option selected>Kỳ hạn</option>
-                {{#each interestRates}}
-                <option value="1">{{this.kyHan}}</option>
-                {{/each}}
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
             </select>
-            <br>
-            <br>
-            <h5>Lãi suất tương ứng : {{this.laiSuat}}</h5>
-            <br>
-            <h5>Thời gian đáo hạn : </h5>
-            <br>
-            <h5>Số tiền muốn gửi</h5>
-            <hr>
+            <select class="custom-select mt-4 mb-4" id="inputGroupSelect01">
+                <option selected>Thời gian đáo hạn</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Số tiền muốn gửi</span>
+                </div>
+                <input class="form-control" aria-label="With textarea">
+            </div>
+            <div class="mt-5 d-flex justify-content-around">
+                <button class="btn btn-danger" type="submit">Hủy bỏ</button>
+                <button class="btn btn-info" type="submit">Xác nhận</button>
+            </div>
         </div>
-        {{/if}}
 
     </div>
 </div>
