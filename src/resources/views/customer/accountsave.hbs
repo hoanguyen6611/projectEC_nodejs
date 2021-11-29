@@ -11,21 +11,54 @@
         <div class="accountsavebank-item inline-block bg-success mt-4">
             <h5>Thông tin gửi tiết kiệm :</h5>
             <br>
-            <select class="custom-select" id="inputGroupSelect01">
-                <option selected>Kỳ hạn</option>
+            <select class="custom-select" id="luaChonKyHan" onChange="update()">
+                <option selected value = "Vui lòng chọn kỳ hạn">Kỳ hạn</option>
                 {{#each interestRates}}
-                <option value="1">{{this.kyHan}}</option>
+                <option value={{this.laiSuat}}>{{this.kyHan}}</option>
                 {{/each}}
             </select>
             <br>
             <br>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Ngày đáo hạn</span>
+                    <span class="input-group-text">Lãi suất </span>
                 </div>
-                <input class="form-control" aria-label="With textarea" name = "tienNgayDaoHan">
+                <input class="form-control" aria-label="With textarea" id = "laiSuat" name = "laiSuat"  disabled>
             </div>
             <br>
+
+            <script type="text/javascript">
+                function update() {
+                    var select = document.getElementById('luaChonKyHan');
+                    var option = select.options[select.selectedIndex];
+
+                    if (option.text == '3 Tháng'){
+                        const deadTime = new Date();
+                        deadTime.setDate(deadTime.getDate());
+                        const date = deadTime.getDate();
+                        deadTime.setMonth(deadTime.getMonth() + 4);
+                        deadTime.setDate(date);
+                        document.getElementById('ngayDaoHan').value = deadTime.getDate() + " / " + deadTime.getMonth() + " / " + deadTime.getFullYear();
+                    }
+                    else 
+                    {
+                         document.getElementById('ngayDaoHan').value = option.value;
+                    } 
+
+                    document.getElementById('laiSuat').value = option.value;
+                }
+
+                update();
+		    </script>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Ngày đáo hạn</span>
+                </div>
+                <input class="form-control" aria-label="With textarea" id = "ngayDaoHan" name = "ngayDaoHan" value = "" disabled>
+            </div>
+            <br>
+
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Số tiền muốn gửi</span>
