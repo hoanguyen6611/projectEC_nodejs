@@ -1,20 +1,23 @@
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-lg-4 min-height mb-4">
-            <div class="card card-course-item">
-                <a href="/courses/{{this.slug}}">
-                    <img src="{{this.linkImg}}" class="card-img-top img-course" alt="{{this.name}}">
-                </a>
-                <div class="card-body">
-                    <a href="/courses/{{this.slug}}">
-                        <h5 class="card-title size text-center color-text">Tên gói tiết kiệm</h5>
-                        <p>Thông tin về gói tiết kiệm</p>
+        {{#if terms}}
+        {{#each terms}}
+        <input type = "hidden" value = "{{this._id}}" name = "id">
+            <div class="col-sm-6 col-lg-4 min-height mb-4">
+                <div class="card card-course-item">
+                    <a href="#">
+                        <img src="https://image.shutterstock.com/image-vector/money-care-logo-financial-management-260nw-1080327866.jpg" class="card-img-top img-course" alt="Hình ảnh đại diện">
                     </a>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-outline-warning">Mở gói</button>
+                    <div class="card-body">
+                        <h5 class="card-title size text-center color-text">Gói {{this.tenGoiTietKiem}}</h5>
+                        <p>Thông tin về gói tiết kiệm</p>
+                        <div class="text-center">
+                            <a href="/term/{{this._id}}/openSaving" class="btn btn-success btn-block">Mở gói</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {{/each}}
+        {{/if}}
     </div>
 </div>

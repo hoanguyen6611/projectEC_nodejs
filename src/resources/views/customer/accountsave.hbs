@@ -1,34 +1,43 @@
 <div class="v1">
+    {{#if soTK}}
     <div class="accountsavebank ">
         <div class="accountsavebank-item inline-block">
-            <h5 class="text-color">Tài khoản nguồn</h5>
-            <h5>012546684</h5>
+            <h5 class="text-color">Tài khoản nguồn : </h5>
+            <h5>{{soTK}}</h5>
+            <h5 class="text-color">Số dư khả dụng : </h5>
+            <h5>{{soDu}} VNĐ</h5>
         </div>
         <br>
         <div class="accountsavebank-item inline-block bg-success mt-4">
+            <h5>Thông tin gửi tiết kiệm :</h5>
+            <br>
             <select class="custom-select" id="inputGroupSelect01">
                 <option selected>Kỳ hạn</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                {{#each interestRates}}
+                <option value="1">{{this.kyHan}}</option>
+                {{/each}}
             </select>
-            <select class="custom-select mt-4 mb-4" id="inputGroupSelect01">
-                <option selected>Thời gian đáo hạn</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+            <br>
+            <br>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Ngày đáo hạn</span>
+                </div>
+                <input class="form-control" aria-label="With textarea" name = "tienNgayDaoHan">
+            </div>
+            <br>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Số tiền muốn gửi</span>
                 </div>
-                <input class="form-control" aria-label="With textarea">
+                <input class="form-control" aria-label="With textarea" name = "tienGui">
             </div>
             <div class="mt-5 d-flex justify-content-around">
-                <button class="btn btn-danger" type="submit">Hủy bỏ</button>
-                <button class="btn btn-info" type="submit">Xác nhận</button>
+                <a href="/term/{{this._id}}/openSaving" class="btn btn-info btn-block">Xác nhận</a>
+                <a href="/term/" class="btn btn-danger btn-block">Hủy thao tác</a>
             </div>
         </div>
 
     </div>
+    {{/if}}
 </div>

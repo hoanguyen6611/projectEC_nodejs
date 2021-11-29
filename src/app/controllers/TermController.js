@@ -13,6 +13,18 @@ class TermController {
 
     //[GET] : term/ : 
     term(req, res, next){
+        Term.find({
+
+        })
+        .then(function(terms){
+            res.render('customer/chooseasb', {
+                terms : mutipleMongooseToObject(terms)
+            })
+        })
+        
+    }
+
+    openSaving(req, res, next){
         const token = executeCookie(req, 'getToken'); 
         const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         Customer.findById({
@@ -22,7 +34,7 @@ class TermController {
         .then(function(customer){
             var cus_Info = customer; 
             interestRate.find({
-                term : '61a0f2453d568a35eda54ec1',
+                term : req.params.id, 
             }).then(function(interestRates)
                 {
                     res.render('customer/accountsave', {
