@@ -36,15 +36,16 @@
             <a href="" class="btn btn-danger" data-toggle="modal" data-target="#tattoan"
                 data-id="" title="Xoá">Tất toán ngay</i></a>
         </div>
+        <form method = "GET" id = "settlementTermNow" action = "/settlement/{{passbookId}}/settlementTermNow"></form>
         <div id="tattoan" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <p>Khi tất toán trước hạn, Quý khách sẽ chỉ nhận được lãi suất không kỳ hạn (0.1%/năm) tính trên số ngày thực gửi cho tài khoản tiết kiệm này</p>
+                        <p>Khi tất toán trước hạn, Quý khách sẽ chỉ nhận được lãi suất không kỳ hạn (0.1%/năm) tính trên số ngày thực gửi cho tài khoản tiết kiệm này !</p>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
-                        <button id="btn-delete-course" type="button" class="btn btn-danger">Đồng ý</button>
+                        <button id="btn-delete-course" type="submit" form = "settlementTermNow" class="btn btn-danger">Đồng ý</button>
                     </div>
                 </div>
             </div>
