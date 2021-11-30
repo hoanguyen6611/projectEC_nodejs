@@ -1,4 +1,4 @@
-# projectEC_nodejs
+# HƯỚNG DẪN SỬ DỤNG PROJECT VỚI GITHUB :
 1. Clone project về
 2. chạy lệnh npm install - Để cài đặt các thư viện
 3. chạy lệnh npm run watch - Để tạo file css
