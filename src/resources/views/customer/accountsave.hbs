@@ -1,76 +1,127 @@
 <div class="v1">
     {{#if soTK}}
-    <div class="accountsavebank ">
-        <div class="accountsavebank-item inline-block">
-            <h5 class="text-color">Tài khoản nguồn : </h5>
-            <h5>{{soTK}}</h5>
-            <h5 class="text-color">Số dư khả dụng : </h5>
-            <h5>{{soDu}} VNĐ</h5>
-        </div>
-        <br>
-        <div class="accountsavebank-item inline-block bg-success mt-4">
-            <h5>Thông tin gửi tiết kiệm :</h5>
-            <br>
-            <select class="custom-select" id="luaChonKyHan" onChange="update()">
-                <option selected value = "Vui lòng chọn kỳ hạn">Kỳ hạn</option>
-                {{#each interestRates}}
-                <option value={{this.laiSuat}}>{{this.kyHan}}</option>
-                {{/each}}
-            </select>
-            <br>
-            <br>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Lãi suất </span>
+        <div class="accountsavebank ">
+            {{#if message}}
+                <div style="text-align: center" class="alert alert-{{message.type}}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{message.intro}}</strong> {{message.message}}
                 </div>
-                <input class="form-control" aria-label="With textarea" id = "laiSuat" name = "laiSuat"  disabled>
+            {{/if}}
+            <div class="accountsavebank-item inline-block">
+                <h5 class="text-color">Tài khoản nguồn : </h5>
+                <h5>{{soTK}}</h5>
+                <h5 class="text-color">Số dư khả dụng : </h5>
+                <h5>{{soDu}} VNĐ</h5>
             </div>
             <br>
+            <form method = "POST" action = "/term/checkSavingMoney?_method=PUT" id = "Accept">
+            <input type = "hidden" name = "soTK" value = "{{soTK}}">
+            <input type = "hidden" name = "soDu" value = "{{soDu}}">
+            <input type = "hidden" name = "termId" value = "{{termId}}">
+            <div class="accountsavebank-item inline-block bg-success mt-4">
+                <h5>Thông tin gửi tiết kiệm :</h5>
+                <br>
+                <select class="custom-select" id="luaChonKyHan" onChange="update()">
+                    <option selected value = "">Kỳ hạn</option>
+                    {{#each interestRates}}
+                    <option value={{this.laiSuat}}>{{this.kyHan}}</option>
+                    {{/each}}
+                </select>
+                <br>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Lãi suất </span>
+                    </div>
+                    <input class="form-control" aria-label="With textarea" id = "laiSuat" name = "laiSuat"  readonly="readonly">
+                </div>
+                <br>
 
-            <script type="text/javascript">
-                function update() {
-                    var select = document.getElementById('luaChonKyHan');
-                    var option = select.options[select.selectedIndex];
+                <script type="text/javascript">
+                    function update() {
+                        var select = document.getElementById('luaChonKyHan');
+                        var option = select.options[select.selectedIndex];
 
-                    if (option.text == '3 Tháng'){
-                        const deadTime = new Date();
-                        deadTime.setDate(deadTime.getDate());
-                        const date = deadTime.getDate();
-                        deadTime.setMonth(deadTime.getMonth() + 4);
-                        deadTime.setDate(date);
-                        document.getElementById('ngayDaoHan').value = deadTime.getDate() + " / " + deadTime.getMonth() + " / " + deadTime.getFullYear();
+                        if (option.text == '3 Tháng'){
+                            const deadTime = new Date();
+                            deadTime.setDate(deadTime.getDate());
+                            const date = deadTime.getDate();
+                            deadTime.setMonth(deadTime.getMonth() + 4);
+                            const year = deadTime.getFullYear();
+                            if (parseInt(year) % 4 == 0 || parseInt(year) % 400 == 0)
+                            {
+                                if (parseInt(date) == 30 && parseInt(deadTime.getMonth()) == 2)
+                                {
+                                    deadTime.setDate(29);
+                                }
+                            }
+                            else {
+                                if (parseInt(date) == 30 && parseInt(deadTime.getMonth()) == 2 || parseInt(date) == 29 && parseInt(deadTime.getMonth()) == 2)
+                                {
+                                    deadTime.setDate(28);
+                                }
+                            }
+                            document.getElementById('ngayDaoHan').value = deadTime.getDate() + " / " + deadTime.getMonth() + " / " + deadTime.getFullYear();
+                        }
+                        else if (option.text == '6 Tháng'){
+                            const deadTime = new Date();
+                            deadTime.setDate(deadTime.getDate());
+                            const date = deadTime.getDate();
+                            deadTime.setMonth(deadTime.getMonth() + 7);
+                            const year = deadTime.getFullYear();
+                            if (parseInt(year) % 4 == 0 || parseInt(year) % 400 == 0)
+                            {
+                                if (parseInt(date) == 30 && parseInt(deadTime.getMonth()) == 2)
+                                {
+                                    deadTime.setDate(29);
+                                }
+                            }
+                            else {
+                                if (parseInt(date) == 30 && parseInt(deadTime.getMonth()) == 2 || parseInt(date) == 29 && parseInt(deadTime.getMonth()) == 2)
+                                {
+                                    deadTime.setDate(28);
+                                }
+                            }
+                            document.getElementById('ngayDaoHan').value = deadTime.getDate() + " / " + deadTime.getMonth() + " / " + deadTime.getFullYear();
+                        }
+                        else 
+                        {
+                            document.getElementById('ngayDaoHan').value = option.value;
+                        } 
+
+                        const convert = (parseFloat(option.value) * 100).toFixed(1);
+                        const value = document.getElementById('laiSuat').value = convert + '%';
+                        document.getElementById('laiSuat').value = convert + '%';
+                        if (value == 'NaN%'){
+                            document.getElementById('laiSuat').value = option.value;
+                        }
+
                     }
-                    else 
-                    {
-                         document.getElementById('ngayDaoHan').value = option.value;
-                    } 
 
-                    document.getElementById('laiSuat').value = option.value;
-                }
+                    update();
+                </script>
 
-                update();
-		    </script>
-
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Ngày đáo hạn</span>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Ngày đáo hạn</span>
+                    </div>
+                    <input class="form-control" aria-label="With textarea" id = "ngayDaoHan" name = "ngayDaoHan" value = "" readonly="readonly">
                 </div>
-                <input class="form-control" aria-label="With textarea" id = "ngayDaoHan" name = "ngayDaoHan" value = "" disabled>
-            </div>
-            <br>
+                <br>
 
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Số tiền muốn gửi</span>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Số tiền muốn gửi</span>
+                    </div>
+                    <input class="form-control" aria-label="With textarea" name = "tienGui">
                 </div>
-                <input class="form-control" aria-label="With textarea" name = "tienGui">
-            </div>
-            <div class="mt-5 d-flex justify-content-around">
-                <a href="/term/{{this._id}}/openSaving" class="btn btn-info btn-block">Xác nhận</a>
-                <a href="/term/" class="btn btn-danger btn-block">Hủy thao tác</a>
+                </form>
+                <form method = "POST" action = "/term/?_method=PUT" id = "Cancel"></form>
+                <div class="mt-5 d-flex justify-content-around">
+                    <button type="submit" class="btn btn-primary" form = "Accept">Xác nhận</button>
+                    <button type="submit" class="btn btn-danger" form = "Cancel">Hủy bỏ</button>
+                </div>
             </div>
         </div>
-
-    </div>
     {{/if}}
 </div>
