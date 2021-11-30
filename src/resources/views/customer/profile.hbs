@@ -4,33 +4,39 @@
             <img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636260329/249000531_905697440068131_6669106597424658124_n_fbahjd.jpg"
                 alt="" class="icon-logo">
         </div>
-        <i class="fas fa-user-plus"></i>
-        <h3 class="text-color">Bổ sung thông tin</h3>
-        <form method="post" class="mt-4" action = "/customer/{{customer._id}}?_method=PUT">
+        <h3 class="text-color text-center mt-5">Thông tin cá nhân</h3>
+        <form method="post" class="mt-4" action="/customer/{{customer._id}}?_method=PUT">
 
-            <input type="hidden" class="form-control label-text"  name = "id" value = "{{customer._id}}">
+            <input type="hidden" class="form-control label-text" name="id" value="{{customer._id}}">
 
             <div class="form-group">
                 <label class="label-name">Họ và tên:</label>
-                <input type="text" class="form-control label-text"  name = "tenKH" placeholder="Nhập họ tên của bạn" value = "{{customer.tenKH}}">
+                <input type="text" class="form-control label-text" name="tenKH" placeholder="Nhập họ tên của bạn"
+                    value="{{customer.tenKH}}">
             </div>
             <div class="form-group">
                 <label class="label-name">Ngày sinh:</label>
-                <input type="text" class="form-control label-text" name = "ngaySinh" placeholder="Nhập ngày sinh của bạn" value = "{{customer.ngaySinh}}">
+                <input type="text" class="form-control label-text" name="ngaySinh" placeholder="Nhập ngày sinh của bạn"
+                    value="{{customer.ngaySinh}}" id="txtNgayThangNamSinh">
             </div>
             <div class="form-group">
                 <label class="label-name">CMND/CCCD:</label>
-                <input type="text" class="form-control label-text" name = "CCCD" placeholder="Nhập CCCD của bạn" value = "{{customer.CCCD}}">
+                <input type="text" class="form-control label-text" name="CCCD" placeholder="Nhập CCCD của bạn"
+                    value="{{customer.CCCD}}">
             </div>
             <div class="form-group">
                 <label class="label-name">Email:</label>
-                <input type="email" class="form-control label-text" name = "email" placeholder="Nhập email của bạn" value = "{{customer.email}}">
+                <input type="email" class="form-control label-text" name="email" placeholder="Nhập email của bạn"
+                    value="{{customer.email}}">
             </div>
             <div class="form-group">
                 <label class="label-name">Số tài khoản ngân hàng:</label>
-                <input type="text" class="form-control label-text" name = "soTK" placeholder="Nhập số tài khoản ngân hàng" value = "{{customer.soTK}}">
+                <input type="text" class="form-control label-text" name="soTK" placeholder="Nhập số tài khoản ngân hàng"
+                    value="{{customer.soTK}}">
             </div>
-           <button type="submit" class="btn btn-primary">Hoàn thành</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Cập nhập</button>
+            </div>
         </form>
     </div>
 </div>

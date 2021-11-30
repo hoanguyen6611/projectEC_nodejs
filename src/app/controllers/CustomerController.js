@@ -140,6 +140,9 @@ class CustomerController {
             )
        })
     }
+    test(req, res,next){
+        res.render('customer/profile');
+    }
 }
 //Public ra ngoài
 module.exports = new CustomerController();

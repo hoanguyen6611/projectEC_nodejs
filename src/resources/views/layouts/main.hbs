@@ -17,7 +17,7 @@
 <body>
     <div class="app">
         {{>header}}
-       
+
         <div class="main">
             {{{body}}}
         </div>
@@ -30,6 +30,16 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+        // Yêu cầu JQUERY UI thay thế INPUT text có id="txtNgayThangNamSinh" thành công cụ chọn ngày tháng Date Picker
+        $('#txtNgayThangNamSinh').datepicker(
+            {
+                showButtonPanel: true,    // option hiển thị nút "Today", "Done"
+                dateFormat: 'dd/mm/yy'    // option Định dạng format ngày tháng; d: Day Ngày; m: Month tháng; y: Year năm
+            }
+        );
+    </script>
 </body>
 
 </html>

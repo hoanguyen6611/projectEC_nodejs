@@ -10,5 +10,6 @@ router.put('/:id', CustomerController.addProfile);
 router.get('/countMe', CustomerController.showInfomation);
 router.post('/checkLogin', CustomerController.checkLogin);
 router.get('/myAccount', CustomerController.myAccount);
+router.get('/test', CustomerController.test);
 
 module.exports = router;
