@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        {{#if passbooks}}
+        {{#each passbooks}}
+        <input type = "hidden" value = "{{this._id}}" name = "id">
+            <div class="col-sm-6 col-lg-4 min-height mb-4">
+                <div class="card card-course-item">
+                    <a href="#">
+                        <img src="https://media.istockphoto.com/vectors/hand-holding-green-bankbook-vector-design-for-business-vector-id833588946?b=1&k=20&m=833588946&s=612x612&w=0&h=JBgoeVdALG1OXkfVtHb4SxLpmXJL_1Uc_OmU_qUKy9o=" class="card-img-top img-course" alt="Hình ảnh đại diện">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title size text-center color-text">Gói {{this.term.tenGoiTietKiem}}</h5>
+                        <h6>Thông tin về sổ tiết kiệm</h6>
+                        <p>Kỳ hạn : {{this.interestRate.kyHan}}</p>
+                        <p>Ngày gửi : {{this.ngayGui}}</p>
+                        <p>Ngày đáo hạn : {{this.ngayDaoHan}}</p>
+                        <div class="text-center">
+                            <a href="/settlement/{{this._id}}/viewDetail" class="btn btn-success btn-block">Xem thông tin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        {{/if}}
+    </div>
+</div>

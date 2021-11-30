@@ -1,16 +1,17 @@
 <div class="v1">
     <div class="accountsavebank ">
+        {{#if passbookId}}
         <h5 class="">Thống kê</h5>
         <div class="accountsavebank-item inline-block">
             <h5>Số tiền</h5>
-            <h4>50,000,000 VND</h4>
+            <h4>{{soTienGui}} VNĐ</h4>
             <div class="d-flex justify-content-between">
-                <button type="button" class="btn">Ngày bắt đầu</button>
-                <button type="button" class="btn">Ngày kết thúc</button>
+                <button type="button" class="btn">Ngày bắt đầu : {{dinhDangNgayBatDau}} </button>
+                <button type="button" class="btn">Ngày kết thúc : {{dinhDangNgayKetThuc}} </button>
             </div>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                    aria-valuemax="100">50%</div>
+                <div class="progress-bar" role="progressbar" style="width: {{phanTramHienThi}}%;" aria-valuenow="50" aria-valuemin="0"
+                    aria-valuemax="100">{{phanTramHienThi}}%</div>
             </div>
             <div class="mt-5 text-right">
                 <button type="button" class="btn"><b>Lịch sử</b></button>
@@ -20,17 +21,15 @@
         <div class="accountsavebank-item inline-block mt-4 d-flex justify-content-around">
             <div class="left">
                 <p>Tên sổ</p>
-                <h5>Thông tin</h5>
+                <h5>{{tenSo}}</h5>
                 <p class="mt-2">Số tài khoản</p>
-                <h5>Thông tin</h5>
+                <h5>{{soTK}}</h5>
                 <p class="mt-2">Lãi tạm tính</p>
-                <h5>Thông tin</h5>
+                <h5>{{laiTamTinh}}</h5>
             </div>
             <div class="right">
                 <p>Kỳ hạn và lãi suất</p>
-                <h5>Thông tin</h5>
-                <p class="mt-2">Khi hết kỳ hạn</p>
-                <h5>Thông tin</h5>
+                <h5>{{kyHanVaLaiSuat}}</h5>
             </div>
         </div>
         <div class="text-center mt-4">
@@ -50,6 +49,6 @@
                 </div>
             </div>
         </div>
-
+        {{/if}}
     </div>
 </div>

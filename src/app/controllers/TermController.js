@@ -62,6 +62,7 @@ class TermController {
         })
     }
 
+    //[PUT] : term/checkSavingMoney
     checkSavingMoney(req, res, next){
 
         const soDu = parseFloat(req.body.soDu);
