@@ -1,5 +1,7 @@
-Bạn gửi 100 triệu tiết kiệm kỳ hạn 6 tháng sẽ được hưởng lãi suất 6%/năm. 
-Tiền lãi dự kiến thu về khi gửi đúng hạn = 100.000.000 *(6%/12) * 6  = 3.000.000 VNĐ
+Ví dụ: Bạn gửi 10 triệu đồng trong kỳ hạn 3 tháng, từ tháng 7 đến tháng 9 với lãi suất là 5%/năm thì số tiền lãi bạn nhận được khi rút tiền đúng hạn sẽ là 10.000.000 x 5% x 90/360 = 125.000 VND.
 
-Tuy nhiên sau 5 tháng bạn quyết định rút toàn bộ số tiền này ra thì lúc này số tiền bạn gửi sẽ được hưởng lãi tiền gửi không kỳ hạn là 0.5%/năm. 
-Tiền lãi thu về thực tế lúc này = 100.000.000 *(0.5%/12) * 5 = 208.333 VNĐ
+Hoặc nếu tính theo công thức thứ 2 thì số tiền lãi là 10.000.000 x 5% x 3/12 = 125.000 VND.
+
+Tuy nhiên, bạn chỉ nhận được số tiền lãi nói trên chỉ khi rút tiền đúng thời hạn theo ngân hàng quy định. Trong trường hợp có việc khẩn cấp phải rút tiền trước hạn, bạn vẫn nhận được số tiền lãi nhưng lúc này tỉ lệ cùng công thức tính lãi suất sẽ được tính theo gửi tiền tiết kiệm không kỳ hạn.
+
+Ví dụ: Cùng là ví dụ trên nhưng đến tháng thứ 2 thì lúc này số tiền lãi bạn nhận được là 10.000.000 x 5% x 60/360 = 83.333 VND.
