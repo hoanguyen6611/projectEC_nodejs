@@ -3,6 +3,7 @@ const Term = require('../models/term.model');
 const InterestRate = require('../models/interestRate.model');
 const Passbook = require('../models/passbook.model');
 const Account = require('../models/account.model');
+const History = require('../models/history.model');
 const { response } = require('express');
 const { mongooseToObject } = require('../../routers/utils/mongoose');
 const executeCookie = require('../../middleware/executeCookie.mdw');
@@ -139,6 +140,12 @@ class SettlementController{
                             Passbook.findByIdAndDelete({
                                 _id : mongoose.Types.ObjectId(req.params.id),
                             }).then(function(){
+                                History.create({
+                                    customer : decodeToken._id, 
+                                    thoiGian : new Date(), 
+                                    trangThai : 'Đã tất toán',
+                                    soTien : soTienTatToan,
+                                });
                                 res.redirect('/customer/myAccount');
                             })
                         })
@@ -186,6 +193,12 @@ class SettlementController{
                                 Passbook.findByIdAndDelete({
                                     _id : mongoose.Types.ObjectId(req.params.id),
                                 }).then(function(){
+                                    History.create({
+                                        customer : decodeToken._id, 
+                                        thoiGian : new Date(), 
+                                        trangThai : 'Đã tất toán',
+                                        soTien : soTienTatToan,
+                                    });
                                     res.redirect('/customer/myAccount');
                                 })
                             })

@@ -3,6 +3,7 @@ const Term = require('../models/term.model');
 const InterestRate = require('../models/interestRate.model');
 const Passbook = require('../models/passbook.model');
 const Account = require('../models/account.model');
+const History = require('../models/history.model');
 const { response } = require('express');
 const { mongooseToObject } = require('../../routers/utils/mongoose');
 const executeCookie = require('../../middleware/executeCookie.mdw');
@@ -16,7 +17,17 @@ class HistoryController {
 
     //[GET] : /history 
     history(req, res, next) {
-        res.render('customer/transactionhis');
+        const token = executeCookie(req, 'getToken'); 
+        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        History.find({
+            customer : decodeToken._id,
+        })
+        .populate('customer')
+        .then(function(historyList){
+            res.render('customer/transactionhis', {
+                historyList : mutipleMongooseToObject(historyList),
+            });
+        })
     };
 }
 //Public ra ngoài

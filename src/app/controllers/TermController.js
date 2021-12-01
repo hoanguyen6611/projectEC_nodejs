@@ -3,6 +3,7 @@ const Term = require('../models/term.model');
 const InterestRate = require('../models/interestRate.model');
 const Passbook = require('../models/passbook.model');
 const Account = require('../models/account.model');
+const History = require('../models/history.model');
 const { response } = require('express');
 const { mongooseToObject } = require('../../routers/utils/mongoose');
 const executeCookie = require('../../middleware/executeCookie.mdw');
@@ -124,6 +125,12 @@ class TermController {
                             interestRate : interestRate_Id, 
                         })
                         .then(function(){
+                            History.create({
+                                customer : cus_Id, 
+                                thoiGian : new Date(), 
+                                trangThai : 'Đã gửi tiết kiệm',
+                                soTien : tienGui,
+                            });
                             console.log('So so tiet kiem thanh cong !')
                             res.redirect('/customer/myAccount')
                         })

@@ -117,7 +117,7 @@ class CustomerController {
        const token = executeCookie(req, 'getToken'); 
        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
        Customer.findById({
-           _id : decodeToken._id 
+           _id : decodeToken._id, 
        })
        .populate('account')
        .then(function(customer){

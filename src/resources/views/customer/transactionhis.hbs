@@ -1,38 +1,19 @@
 <div class="historybank">
   <div class="historybank-item inline-block bg-success">
     <h5 class="text-color border-tran">Giao dịch gần đây</h5>
+    {{#if historyList}}
     <table class="table mt-4">
       <tbody>
+        {{#each historyList}}
         <tr>
           <th scope="row">1</th>
-          <td>12-11-2021 07:16:15</td>
-          <td>Tất toán đến tài khoản</td>
+          <td>{{this.thoiGian}}</td>
+          <td>{{this.trangThai}}</td>
+          <td>{{this.soTien}} VNĐ</td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>12-11-2021 07:16:15</td>
-          <td>Gửi tiết kiệm số tiền</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>12-11-2021 07:16:15</td>
-          <td>Tất toán đến tài khoản</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>12-11-2021 07:16:15</td>
-          <td>Gửi tiết kiệm số tiền</td>
-        </tr><tr>
-          <th scope="row">5</th>
-          <td>12-11-2021 07:16:15</td>
-          <td>Tất toán đến tài khoản</td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>12-11-2021 07:16:15</td>
-          <td>Gửi tiết kiệm số tiền</td>
-        </tr>
+        {{/each}}
       </tbody>
     </table>
+    {{/if}}
   </div>
 </div>
