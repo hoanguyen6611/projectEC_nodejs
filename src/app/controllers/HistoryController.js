@@ -24,8 +24,10 @@ class HistoryController {
         })
         .populate('customer')
         .then(function(historyList){
+            const tenTK = executeCookie(req, 'getTenTK'); 
             res.render('customer/transactionhis', {
                 historyList : mutipleMongooseToObject(historyList),
+                tenTK : tenTK,
             });
         })
     };

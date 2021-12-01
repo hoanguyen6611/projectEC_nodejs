@@ -50,7 +50,10 @@ class CustomerController {
                             tenTK : req.body.userName
                         })
                         .then(function(customer){
-                            res.render('customer/profile', {customer : mongooseToObject(customer)});
+                            
+                            res.render('customer/addprofile', {
+                                customer : mongooseToObject(customer)
+                            });
                         })
                     })
                 }
@@ -130,18 +133,38 @@ class CustomerController {
             .populate('customer')
             .then(
                 function(passbook){
-                    console.log(passbook);
+                    const tenTK = executeCookie(req, 'getTenTK'); 
                     res.render('customer/accountsavebank', 
                     {soTK : cus_Info.soTK, 
                      soDu : cus_Info.account.soDu,
                      passbooks : mutipleMongooseToObject(passbook),
+                     tenTK : tenTK,
                     })
                 }
             )
        })
     }
-    test(req, res,next){
-        res.render('customer/profile');
+
+    //[GET] : customer/showInfomationOfAccount
+    showInfomationOfAccount(req, res, next){
+        const token = executeCookie(req, 'getToken'); 
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        Customer.findOne({
+            _id : decodeToken._id, 
+        }) 
+        .then(function(customer){
+            res.render('customer/profile'), {
+                customer : mongooseToObject(customer),
+                tenTK : tenTK,
+            }
+        })
+    }
+
+    //[POST] : customer/logout 
+    logOut(req, res, next){
+        res.clearCookie("token");
+        res.redirect('/');
     }
 }
 //Public ra ngoài

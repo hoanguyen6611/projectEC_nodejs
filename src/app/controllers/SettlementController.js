@@ -33,11 +33,12 @@ class SettlementController{
             .populate('customer')
             .then(
                 function(passbook){
-                    console.log(passbook);
+                    const tenTK = executeCookie(req, 'getTenTK'); 
                     res.render('customer/settlementList', 
                     {soTK : cus_Info.soTK, 
                      soDu : cus_Info.account.soDu,
                      passbooks : mutipleMongooseToObject(passbook),
+                     tenTK : tenTK,
                     })
                 }
             )
@@ -73,6 +74,7 @@ class SettlementController{
             var soTK = passbook.customer.soTK; 
             var laiTamTinh = parseFloat(passbook.soTienGui) + parseFloat((parseFloat(passbook.interestRate.laiSuat) * parseFloat(passbook.soTienGui)).toFixed(2));
             var kyHanVaLaiSuat = passbook.interestRate.kyHan + ' / '+ (parseFloat(passbook.interestRate.laiSuat) * 100).toFixed(1).toString() + '%';
+            const tenTK = executeCookie(req, 'getTenTK'); 
             res.render('customer/accountsavedetail', {
                 soTienGui : passbook.soTienGui,
                 phanTramHienThi : phanTramHienThi, 
@@ -83,6 +85,7 @@ class SettlementController{
                 laiTamTinh : laiTamTinh, 
                 kyHanVaLaiSuat : kyHanVaLaiSuat, 
                 passbookId : passbook._id,
+                tenTK : tenTK,
             });
         })
     }
@@ -140,13 +143,16 @@ class SettlementController{
                             Passbook.findByIdAndDelete({
                                 _id : mongoose.Types.ObjectId(req.params.id),
                             }).then(function(){
+                                const tenTK = executeCookie(req, 'getTenTK'); 
                                 History.create({
                                     customer : decodeToken._id, 
                                     thoiGian : new Date(), 
                                     trangThai : 'Đã tất toán',
                                     soTien : soTienTatToan,
                                 });
-                                res.redirect('/customer/myAccount');
+                                res.redirect('/customer/myAccount', {
+                                    tenTK : tenTK,
+                                });
                             })
                         })
                     })
@@ -193,13 +199,16 @@ class SettlementController{
                                 Passbook.findByIdAndDelete({
                                     _id : mongoose.Types.ObjectId(req.params.id),
                                 }).then(function(){
+                                    const tenTK = executeCookie(req, 'getTenTK'); 
                                     History.create({
                                         customer : decodeToken._id, 
                                         thoiGian : new Date(), 
                                         trangThai : 'Đã tất toán',
                                         soTien : soTienTatToan,
                                     });
-                                    res.redirect('/customer/myAccount');
+                                    res.redirect('/customer/myAccount', {
+                                        tenTK : tenTK,
+                                    });
                                 })
                             })
                         })

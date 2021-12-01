@@ -21,8 +21,10 @@ class TermController {
 
         })
         .then(function(terms){
+            const tenTK = executeCookie(req, 'getTenTK'); 
             res.render('customer/chooseasb', {
-                terms : mutipleMongooseToObject(terms)
+                terms : mutipleMongooseToObject(terms),
+                tenTK : tenTK,
             })
         })
         
@@ -41,6 +43,7 @@ class TermController {
                 term : req.params.id, 
             }).then(function(interestRates)
                 {
+                    const tenTK = executeCookie(req, 'getTenTK'); 
                     if (req.session.message){
                         res.render('customer/accountsave', {
                             soTK : cus_Info.soTK, 
@@ -48,6 +51,7 @@ class TermController {
                             interestRates : mutipleMongooseToObject(interestRates),
                             termId : req.params.id,
                             message : req.session.message,
+                            tenTK : tenTK,
                         })
                     }
                     else{
@@ -56,6 +60,7 @@ class TermController {
                             soDu : cus_Info.account.soDu, 
                             interestRates : mutipleMongooseToObject(interestRates),
                             termId : req.params.id,
+                            tenTK : tenTK,
                         })
                     }
                 }
