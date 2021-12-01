@@ -150,9 +150,7 @@ class SettlementController{
                                     trangThai : 'Đã tất toán',
                                     soTien : soTienTatToan,
                                 });
-                                res.redirect('/customer/myAccount', {
-                                    tenTK : tenTK,
-                                });
+                                res.redirect('/customer/myAccount');
                             })
                         })
                     })
@@ -206,9 +204,7 @@ class SettlementController{
                                         trangThai : 'Đã tất toán',
                                         soTien : soTienTatToan,
                                     });
-                                    res.redirect('/customer/myAccount', {
-                                        tenTK : tenTK,
-                                    });
+                                    res.redirect('/customer/myAccount');
                                 })
                             })
                         })
