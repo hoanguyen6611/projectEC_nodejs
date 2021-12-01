@@ -1,0 +1,11 @@
+[{
+  "_id": {
+    "$oid": "61a0f2453d568a35eda54ec1"
+  },
+  "tenGoiTietKiem": "Kỳ hạn thường"
+},{
+  "_id": {
+    "$oid": "61a0f3753d568a35eda54ec2"
+  },
+  "tenGoiTietKiem": "Saving Money"
+}]

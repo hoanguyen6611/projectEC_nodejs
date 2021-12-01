@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "61a0f4103d568a35eda54ec5"
+  },
+  "kyHan": "3 Tháng",
+  "laiSuat": 0.038,
+  "term": {
+    "$oid": "61a0f2453d568a35eda54ec1"
+  }
+},{
+  "_id": {
+    "$oid": "61a4d8edfd485e108b81c7e4"
+  },
+  "kyHan": "6 Tháng",
+  "laiSuat": 0.056,
+  "term": {
+    "$oid": "61a0f2453d568a35eda54ec1"
+  }
+}]
