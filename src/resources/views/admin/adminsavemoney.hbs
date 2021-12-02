@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="mb-3">
+        <button type="button" class="btn btn-outline-dark">Quản lý các gói tiết kiệm</button>
+        <button type="button" class="btn btn-outline-dark">Quản lý khách hàng</button>
+        <button type="button" class="btn btn-outline-dark">Quản lý nguồn tiền</button>
+    </div>
+    <a class="btn btn-success" href="" title="Thêm mới"><i class="fas fa-plus"></i></a>
+    <div class="row">
+        <input type="hidden" value="{{this._id}}" name="id">
+        <div class="col-sm-6 col-lg-4 min-height mb-4">
+            <div class="card card-course-item">
+                <a href="#">
+                    <img src="https://image.shutterstock.com/image-vector/money-care-logo-financial-management-260nw-1080327866.jpg"
+                        class="card-img-top img-course" alt="Hình ảnh đại diện">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title size text-center color-text">Gói </h5>
+                    <p>Thông tin về gói tiết kiệm</p>
+                    <a href="" class="btn btn-success" title="Cập nhập"><i class="far fa-edit"></i></a>
+                    <a href="" class="btn btn-danger" data-toggle="modal" data-target="#delete-savemoney-modal"
+                        data-id="" title="Xoá"><i class="fas fa-trash-alt"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="delete-savemoney-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xác nhận xoá gói tiết kiệm</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn chắc chắn muốn xóa gói tiết kiệm này?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa bỏ</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            </div>
+        </div>
+    </div>
+</div>

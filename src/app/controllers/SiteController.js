@@ -9,6 +9,10 @@ class SiteController {
         const tenTK = executeCookie(req, 'getTenTK'); 
         res.render('home', {tenTK : tenTK});
     };
+    //[GET] /home/admin
+    admin(req, res, next) { 
+        res.render('admin/admincustomer');
+    };
 
 }
 //Public ra ngoài

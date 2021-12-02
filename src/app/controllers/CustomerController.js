@@ -8,12 +8,12 @@ const { mongooseToObject } = require('../../routers/utils/mongoose')
 const executeCookie = require('../../middleware/executeCookie.mdw')
 const jwt = require('jsonwebtoken')
 const {mutipleMongooseToObject} = require('../../routers/utils/mongoose')
-const paypal = require('paypal-rest-sdk');
-paypal.configure({
-    'mode': 'sandbox', //sandbox or live
-    'client_id': 'AbSG6b7VOE2g4O9vo8hEQXIR0qVNJXvfNm2aPL8q9KXej1Pe0xAtcmAm0tqkGVfz1pWdR13Qo19JVfFh',
-    'client_secret': 'EGmzZF6LvtjIS2QwzPvD3x2kuKZQr5ywUsUOqDhADUPpdaXkwVuDxWcgi5wmYhGh7IgB2W3GWAgJi3RK'
-});
+// const paypal = require('paypal-rest-sdk');
+// paypal.configure({
+//     'mode': 'sandbox', //sandbox or live
+//     'client_id': 'AbSG6b7VOE2g4O9vo8hEQXIR0qVNJXvfNm2aPL8q9KXej1Pe0xAtcmAm0tqkGVfz1pWdR13Qo19JVfFh',
+//     'client_secret': 'EGmzZF6LvtjIS2QwzPvD3x2kuKZQr5ywUsUOqDhADUPpdaXkwVuDxWcgi5wmYhGh7IgB2W3GWAgJi3RK'
+// });
 
 
 require('dotenv').config()
