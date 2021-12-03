@@ -7,18 +7,16 @@
                     <strong>{{message.intro}}</strong> {{message.message}}
                 </div>
             {{/if}}
-            <div class="accountsavebank-item inline-block">
-                <h5 class="text-color">Tài khoản nguồn : </h5>
-                <h5>{{soTK}}</h5>
-                <h5 class="text-color">Số dư khả dụng : </h5>
-                <h5>{{soDu}} VNĐ</h5>
+            <div class="accountsave-item inline-block">
+                <p class="text-color" style="font-size:20px">Tài khoản nguồn:<b>{{soTK}}</b> </p>
+                <p class="text-color" style="font-size:20px">Số dư khả dụng: <b>{{soDu}} VNĐ</b> </p>
             </div>
             <br>
             <form method = "POST" action = "/term/checkSavingMoney?_method=PUT" id = "Accept">
             <input type = "hidden" name = "soTK" value = "{{soTK}}">
             <input type = "hidden" name = "soDu" value = "{{soDu}}">
             <input type = "hidden" name = "termId" value = "{{termId}}">
-            <div class="accountsavebank-item inline-block bg-success mt-4">
+            <div class="accountsaves-item inline-block mt-4">
                 <h5>Thông tin gửi tiết kiệm :</h5>
                 <br>
                 <select class="custom-select" id="luaChonKyHan" onChange="update()">
@@ -118,8 +116,8 @@
                 </form>
                 <form method = "POST" action = "/term/?_method=PUT" id = "Cancel"></form>
                 <div class="mt-5 d-flex justify-content-around">
-                    <button type="submit" class="btn btn-primary" form = "Accept">Xác nhận gửi tiết kiệm</button>
-                    <button type="submit" class="btn btn-danger" form = "Cancel">Hủy bỏ</button>
+                    <button type="submit" class="btn btn-dark" form = "Accept">Xác nhận gửi tiết kiệm</button>
+                    <button type="submit" class="btn" form = "Cancel">Hủy bỏ</button>
                 </div>
             </div>
         </div>

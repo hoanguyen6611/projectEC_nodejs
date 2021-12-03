@@ -6,13 +6,13 @@
             <div class="col-sm-6 col-lg-4 min-height mb-4">
                 <div class="card card-course-item">
                     <a href="#">
-                        <img src="https://image.shutterstock.com/image-vector/money-care-logo-financial-management-260nw-1080327866.jpg" class="card-img-top img-course" alt="Hình ảnh đại diện">
+                        <img src="{{this.image}}" class="card-img-top img-course" alt="Hình ảnh đại diện">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title size text-center color-text">Gói {{this.tenGoiTietKiem}}</h5>
-                        <p>Thông tin về gói tiết kiệm</p>
+                        <p class="description">{{this.description}}</p>
                         <div class="text-center">
-                            <a href="/term/{{this._id}}/openSaving" class="btn btn-success btn-block">Mở gói</a>
+                            <a href="/term/{{this._id}}/openSaving" class="btn btn-secondary"><b>Mở gói</b></a>
                         </div>
                     </div>
                 </div>

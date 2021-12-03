@@ -1,35 +1,43 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .card-course-item {
-  margin-top: 16px; }
+  margin-top: 16px;
+}
 
 .checkbox-option {
   width: 140px;
-  margin: 0 16px; }
+  margin: 0 16px;
+}
 
 .user-avatar {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  margin-right: 4px; }
+  margin-right: 4px;
+}
 
 .account {
-  margin-left: 450px; }
+  margin-left: 450px;
+}
 
 .icon-logo {
   width: 200px;
-  height: 60px; }
+  height: 60px;
+}
 
 .img-slider {
-  width: 100%; }
+  width: 100%;
+}
 
 .form-signin {
   display: flex;
   background-color: #008c45;
-  height: 585px; }
+  height: 585px;
+}
 
 .form-signin-item {
   margin: auto;
@@ -38,13 +46,15 @@
   width: 673px;
   height: 350px;
   padding: 36px;
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 .form-signup {
   display: flex;
   background-color: #008c45;
   height: 625px;
-  margin-top: 50px; }
+  margin-top: 50px;
+}
 
 .form-signup-item {
   margin: auto;
@@ -53,25 +63,31 @@
   width: 673px;
   height: 550px;
   padding: 36px;
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 body {
-  background-color: #008c45; }
+  /* background-color: #008c45; */
+}
 
 .text-color {
-  color: #008c45; }
+  color: #008c45;
+}
 
 .label-name {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .label-text {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .profile {
   display: flex;
   background-color: #008c45;
   height: 625px;
-  margin-top: 50px; }
+  margin-top: 50px;
+}
 
 .profile-item {
   margin: auto;
@@ -80,15 +96,23 @@ body {
   width: 1000px;
   height: 900px;
   padding: 36px;
-  background-color: #fff; }
+  background-color: #fff;
+}
 
 .icon {
   width: 30px;
-  height: 30px; }
+  height: 30px;
+}
+
+.icon-2 {
+  width: 60px;
+  height: 60px;
+}
 
 .accountme {
   height: 625px;
-  margin-top: 50px; }
+  margin-top: 50px;
+}
 
 .accountme-item {
   margin: auto;
@@ -99,53 +123,63 @@ body {
   background-color: #fff;
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap-reverse; }
+  flex-wrap: wrap-reverse;
+}
 
 .icon-account {
   width: 60px;
-  height: 60px; }
+  height: 60px;
+}
 
 .img-sale {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .img-sale-item {
   width: 1000px;
-  border-radius: 20px; }
+  border-radius: 20px;
+}
 
 .inline-block {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .block {
-  display: block; }
+  display: block;
+}
 
 .accountsavebank {
   height: 625px;
-  margin-top: 50px; }
+  margin-top: 50px;
+}
 
 .accountsavebank-item {
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 50px;
-  width: 700px;
+  width: 500px;
+  height: 250px;
   padding: 50px;
-  background-color: #fff; }
+  background-color: #fff;
+}
 
-.v1 {
-  display: flex; }
+
 
 .historybank {
   margin-top: 50px;
   display: flex;
-  align-items: center; }
+  align-items: center;
+}
 
 .historybank-item {
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 50px;
   width: 1200px;
-  padding: 50px; }
+  padding: 50px;
+}
 
 .border-tran {
   border: 1px solid #ccc;
@@ -154,20 +188,27 @@ body {
   margin-bottom: 10px;
   color: #000;
   padding: 8px;
-  background-color: #54ff9f; }
+  background-color: #54ff9f;
+}
 
 .endow {
   color: #fff;
-  opacity: 0.5; }
+}
+.endow-2 {
+  color: #fff;
+  opacity: 0.8;
+}
 
 .v1 {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+}
 
 .accountsave {
   height: 625px;
-  margin-top: 50px; }
+  margin-top: 50px;
+}
 
 .accountsave-item {
   margin: auto;
@@ -175,4 +216,45 @@ body {
   border-radius: 50px;
   width: 700px;
   padding: 50px;
-  background-color: #fff; }
+  background-color: #fff;
+}
+
+.ruttien {
+  font-size: 28px;
+}
+.border-accountsavebank {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 45px;
+  margin-bottom: 50px;
+}
+.description {
+  height:150px;
+}
+.accountsave-item {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 500px;
+  height: 170px;
+  padding: 50px;
+  background-color: #fff;
+}
+.accountsaves-item {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 500px;
+  height: 500px;
+  padding: 50px;
+  background-color: #fff;
+}
+.accountsavedetail-item {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  width: 500px;
+  height: 300px;
+  padding: 50px;
+  background-color: #fff;
+}

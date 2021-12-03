@@ -7,7 +7,9 @@ mongoose.plugin(slug)
 const Schema = mongoose.Schema
 
 const termSchema = new Schema({
-    tenGoiTietKiem : {type : String, maxlength : 255, required : true}
+    tenGoiTietKiem : {type : String, maxlength : 255, required : true},
+    image : {type : String, required : true},
+    description : {type : String, required : true}
     
 }, {
     collection : 'Term'

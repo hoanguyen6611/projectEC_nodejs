@@ -1,44 +1,84 @@
-<div class="v1">
+<div class="container mb-5">
     <div class="accountsavebank ">
         {{#if message}}
-                <div style="text-align: center" class="alert alert-{{message.type}}">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>{{message.intro}}</strong> {{message.message}}
-                </div>
+        <div style="text-align: center" class="alert alert-{{message.type}}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message.intro}}</strong> {{message.message}}
+        </div>
         {{/if}}
         {{#if soTK}}
-        <h4 class="endow">Tài khoản thanh toán</h4>
-        <div class="accountsavebank-item inline-block">
-            <h5 class="text-color">Tài khoản hiện tại : {{soTK}}</h5>
-            <h5>Số dư khả dụng : {{soDu}} VNĐ</h5>
-            <h5 class="text-color">Nạp hoặc rút tiền thông qua ví Paypal :</h5>
-            <form method = "POST" action = "/paypal/withdrawMoney" id = "Addition">
-                <h7>Nhập số tiền bạn muốn nạp thêm từ ví :</h7>
-                <input type = "text" name = "soTienMuonNap">
-                <input type = "hidden" name = "customer" value = "{{customer}}">
-            </form>
-            <button type="submit" class="btn btn-primary" form = "Addition">Nạp thêm tiền vào tài khoản</button>
-            
-            <form method = "POST" action = "/paypal/rechargeMoney" id = "Minus">
-                <h7>Nhập số tiền bạn muốn rút khỏi tài khoản :</h7>
-                <input type = "text" name = "soTienMuonRut">
-                <input type = "hidden" name = "soDu" value = "{{soDu}}">
-            </form>
-            
-            <button type="submit" class="btn btn-danger" form = "Minus">Rút tiền khỏi tài khoản</button>
+        <h4 class="">Tài khoản thanh toán</h4>
+        <div class="d-flex justify-content-around mt-4">
+            <div class="accountsavebank-item inline-block text-center">
+                <h4 class="text-color"><i class="fas fa-coins"></i> Nạp hoặc rút tiền thông qua ví Paypal</h4>
+                <a href="" class="btn btn-light" data-toggle="modal" data-target="#naptien" data-id="" title="Xoá"><img
+                        src="https://res.cloudinary.com/dxd5emviu/image/upload/v1638542548/money-withdrawal_ieryb3.png"
+                        class="icon-2 mr-2"><br><b>Nạp tiền</b></i></a>
+
+                <a href="" class="btn btn-light " data-toggle="modal" data-target="#ruttien" data-id="" title="Xoá"><img
+                        src="https://res.cloudinary.com/dxd5emviu/image/upload/v1638542609/money_1_jpc69u.png"
+                        class="icon-2 mr-2"><br><b>Rút tiền</b></i></a>
+            </div>
+            <div class="accountsavebank-item inline-block text-center">
+                <p class="text-color" style="font-size: 25px;">Tài khoản hiện tại : <b>{{soTK}}</b></p>
+                <p class="mt-3" style="font-size: 25px;">Số dư
+                <div style="color:red;font-size: 28px;"><b>{{soDu}} VNĐ</b></div>
+                </p>
+            </div>
+
         </div>
         <br>
         <br>
-        <h4 class="endow">Sổ tiết kiệm của bạn :</h4>
-        {{#each passbooks}}
-        <div class="accountsavebank-item inline-block bg-success">
-            <h5 class="text-color">Loại sổ : {{this.term.tenGoiTietKiem}}</h5>
-            <h5>Số tiền tiết kiệm: {{this.soTienGui}} VNĐ</h5>
-            <h5>Kỳ hạn : {{this.interestRate.kyHan}}</h5>
-            <h5>Ngày đáo hạn : {{this.ngayDaoHan}}</h5>
+        <h4 class="">Sổ tiết kiệm của bạn :</h4>
+        <div class="border-accountsavebank mt-4 mb-4">
+            {{#each passbooks}}
+            <div class="accountsavebank-item inline-block mt-5 p-4">
+                <p style="font-size: 18px;">Loại sổ : <b>{{this.term.tenGoiTietKiem}}</b></p>
+                <p style="font-size: 18px;">Số tiền tiết kiệm: <b>{{this.soTienGui}} VNĐ</b></p>
+                <p style="font-size: 18px;">Kỳ hạn : <b>{{this.interestRate.kyHan}}</b></p>
+                <p style="font-size: 18px;">Ngày đáo hạn : <b>{{this.ngayDaoHan}}</b></p>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
         {{/if}}
 
+    </div>
+</div>
+<div id="naptien" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog p-2" role="document">
+        <div class="modal-content">
+            <form method="POST" action="/paypal/withdrawMoney" id="Addition">
+                <input type="hidden" name="customer" value="{{customer}}">
+                <h5 class="text-center mt-4">NẠP TIỀN</h5>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control ml-5 mr-5" name="soTienMuonNap" placeholder="Số tiền cần nạp"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+            </form>
+            <div class="modal-footer d-flex justify-content-around">
+                <button type="button" class="btn" data-dismiss="modal">Hủy bỏ</button>
+                <button type="submit" class="btn" form="Addition">Nạp tiền</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ruttien" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST" action="/paypal/rechargeMoney" id="Minus">
+                <h5 class="text-center mt-4">RÚT TIỀN</h5>
+                <input type="hidden" name="soDu" value="{{soDu}}">
+                <div class="input-group mb-3">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control ml-5 mr-5" name="soTienMuonRut" placeholder="Số tiền cần rút"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                </div>
+            </form>
+            <div class="modal-footer d-flex justify-content-around">
+                <button type="button" class="btn " data-dismiss="modal">Hủy bỏ</button>
+                <button type="submit" class="btn " form="Minus">Rút tiền</button>
+            </div>
+        </div>
     </div>
 </div>
