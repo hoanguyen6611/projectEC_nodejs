@@ -1,10 +1,31 @@
 <div class="v1">
     <div class="accountsavebank ">
+        {{#if message}}
+                <div style="text-align: center" class="alert alert-{{message.type}}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{message.intro}}</strong> {{message.message}}
+                </div>
+        {{/if}}
         {{#if soTK}}
         <h4 class="endow">Tài khoản thanh toán</h4>
         <div class="accountsavebank-item inline-block">
-            <h5 class="text-color">Tài khoản hiện tại: {{soTK}}</h5>
-            <h5>Số dư khả dụng: {{soDu}} VNĐ</h5>
+            <h5 class="text-color">Tài khoản hiện tại : {{soTK}}</h5>
+            <h5>Số dư khả dụng : {{soDu}} VNĐ</h5>
+            <h5 class="text-color">Nạp hoặc rút tiền thông qua ví Paypal :</h5>
+            <form method = "POST" action = "/paypal/withdrawMoney" id = "Addition">
+                <h7>Nhập số tiền bạn muốn nạp thêm từ ví :</h7>
+                <input type = "text" name = "soTienMuonNap">
+                <input type = "hidden" name = "customer" value = "{{customer}}">
+            </form>
+            <button type="submit" class="btn btn-primary" form = "Addition">Nạp thêm tiền vào tài khoản</button>
+            
+            <form method = "POST" action = "/paypal/rechargeMoney" id = "Minus">
+                <h7>Nhập số tiền bạn muốn rút khỏi tài khoản :</h7>
+                <input type = "text" name = "soTienMuonRut">
+                <input type = "hidden" name = "soDu" value = "{{soDu}}">
+            </form>
+            
+            <button type="submit" class="btn btn-danger" form = "Minus">Rút tiền khỏi tài khoản</button>
         </div>
         <br>
         <br>

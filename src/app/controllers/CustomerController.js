@@ -8,12 +8,12 @@ const { mongooseToObject } = require('../../routers/utils/mongoose')
 const executeCookie = require('../../middleware/executeCookie.mdw')
 const jwt = require('jsonwebtoken')
 const {mutipleMongooseToObject} = require('../../routers/utils/mongoose')
-// const paypal = require('paypal-rest-sdk');
-// paypal.configure({
-//     'mode': 'sandbox', //sandbox or live
-//     'client_id': 'AbSG6b7VOE2g4O9vo8hEQXIR0qVNJXvfNm2aPL8q9KXej1Pe0xAtcmAm0tqkGVfz1pWdR13Qo19JVfFh',
-//     'client_secret': 'EGmzZF6LvtjIS2QwzPvD3x2kuKZQr5ywUsUOqDhADUPpdaXkwVuDxWcgi5wmYhGh7IgB2W3GWAgJi3RK'
-// });
+const paypal = require('paypal-rest-sdk');
+paypal.configure({
+    'mode': 'sandbox', //sandbox or live
+    'client_id': 'AbSG6b7VOE2g4O9vo8hEQXIR0qVNJXvfNm2aPL8q9KXej1Pe0xAtcmAm0tqkGVfz1pWdR13Qo19JVfFh',
+    'client_secret': 'EGmzZF6LvtjIS2QwzPvD3x2kuKZQr5ywUsUOqDhADUPpdaXkwVuDxWcgi5wmYhGh7IgB2W3GWAgJi3RK'
+});
 
 
 require('dotenv').config()
@@ -142,13 +142,26 @@ class CustomerController {
             .populate('customer')
             .then(
                 function(passbook){
-                    const tenTK = executeCookie(req, 'getTenTK'); 
-                    res.render('customer/accountsavebank', 
-                    {soTK : cus_Info.soTK, 
-                     soDu : cus_Info.account.soDu,
-                     passbooks : mutipleMongooseToObject(passbook),
-                     tenTK : tenTK,
+                    const tenTK = executeCookie(req, 'getTenTK');
+                    if (req.session.message){
+                        res.render('customer/accountsavebank', 
+                        {soTK : cus_Info.soTK, 
+                         customer : mongooseToObject(cus_Info),
+                         soDu : cus_Info.account.soDu,
+                         passbooks : mutipleMongooseToObject(passbook),
+                         tenTK : tenTK,
+                         message : req.session.message,
+                        })
+                    } 
+                    else{
+                        res.render('customer/accountsavebank', 
+                        {soTK : cus_Info.soTK, 
+                        customer : mongooseToObject(cus_Info),
+                        soDu : cus_Info.account.soDu,
+                        passbooks : mutipleMongooseToObject(passbook),
+                        tenTK : tenTK,
                     })
+                    }
                 }
             )
        })
@@ -174,78 +187,6 @@ class CustomerController {
     logOut(req, res, next){
         res.clearCookie("token");
         res.redirect('/');
-    }
-
-    //[POST] : customer/paypal 
-    paypal(req, res, next){
-        const create_payment_json = {
-            "intent": "sale",
-            "payer": {
-                "payment_method": "paypal"
-            },
-            "redirect_urls": {
-                "return_url": "http://return.url",
-                "cancel_url": "http://cancel.url"
-            },
-            "transactions": [{
-                "item_list": {
-                    "items": [{
-                        "name": "item",
-                        "sku": "item",
-                        "price": "1.00",
-                        "currency": "USD",
-                        "quantity": 1
-                    }]
-                },
-                "amount": {
-                    "currency": "USD",
-                    "total": "1.00"
-                },
-                "description": "This is the payment description."
-            }]
-        };
-         
-         
-        paypal.payment.create(create_payment_json, function (error, payment) {
-            if (error) {
-                throw error;
-            } else {
-                for(let i = 0; i < payment.links.length; i++){
-                    if(payment.links[i].rel === 'approval_url'){
-                        res.redirect(payment.links[i].href);
-                    }
-                }
-            }
-        });
-    }
-
-    //
-    paypalSucces(req, res, next){
-        const payerId = req.query.PayerID;
-        const paymentId = req.query.paymentId; 
-
-        const excute_payment_json = {
-            "payer_id" : payerId,
-            "transactions" : [{
-                "amount" : {
-                    "currency" : "USD", 
-                    "total" : "25.00",
-                }
-            }]
-        }; 
-
-        paypal.payment.execute(paymentId, excute_payment_json, function(error, payment){
-            if(error){
-                console.log(error.respose); 
-                throw error;
-            }
-            else{
-                console.log(JSON.stringify(payment));
-                res.send('Success !');
-            }
-        })
-
-        res.send('Cancelled !')
     }
 }
 //Public ra ngoài

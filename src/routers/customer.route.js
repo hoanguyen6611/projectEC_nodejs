@@ -11,7 +11,6 @@ router.get('/countMe', CustomerController.showInfomation);
 router.post('/checkLogin', CustomerController.checkLogin);
 router.get('/myAccount', CustomerController.myAccount);
 router.get('/logout', CustomerController.logOut)
-router.post('/paypal', CustomerController.paypal);
 router.get('/showInfomationOfAccount', CustomerController.showInfomationOfAccount);
 
 module.exports = router;

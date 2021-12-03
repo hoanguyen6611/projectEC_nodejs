@@ -78,10 +78,6 @@ class TermController {
         const ngay = ngayGui[0]; 
         const thang = ngayGui[1];
         const nam = ngayGui[2];
-        const ngayDaoHan = new Date(`${nam}, ${thang}, ${ngay}`); 
-        console.log(laiSuat);
-        console.log(ngayGui, ngay, thang, nam, ngayDaoHan);
-        console.log(mongoose.Types.ObjectId(req.body.termId));
 
         if (req.body.tienGui === '' || req.body.laiSuat === '' || req.body.ngayDaoHan === '' || tienGui === 0){
             req.session.message = {
