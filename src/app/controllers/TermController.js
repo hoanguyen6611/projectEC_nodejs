@@ -125,7 +125,12 @@ class TermController {
                             customer : cus_Id, 
                             interestRate : interestRate_Id, 
                         })
-                        .then(function(){
+                        .then(function(passbook){
+                            req.session.message = {
+                                type: 'success',
+                                intro: 'Thành công ! ',
+                                message: `Bạn đã mở thành công gói tiết kiệm với số tiền là : ${tienGui} !`
+                            }
                             History.create({
                                 customer : cus_Id, 
                                 thoiGian : new Date(), 

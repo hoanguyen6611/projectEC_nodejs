@@ -144,6 +144,7 @@ class CustomerController {
                 function(passbook){
                     const tenTK = executeCookie(req, 'getTenTK');
                     if (req.session.message){
+                        console.log(req.session.message)
                         res.render('customer/accountsavebank', 
                         {soTK : cus_Info.soTK, 
                          customer : mongooseToObject(cus_Info),

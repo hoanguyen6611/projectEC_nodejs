@@ -144,6 +144,11 @@ class SettlementController{
                                 _id : mongoose.Types.ObjectId(req.params.id),
                             }).then(function(){
                                 const tenTK = executeCookie(req, 'getTenTK'); 
+                                req.session.message = {
+                                    type : 'success', 
+                                    intro: 'Thành công ! ',
+                                    message: `Đã tất toán thành công số tiền ${soTienTatToan.toFixed(2)} !`,
+                                };
                                 History.create({
                                     customer : decodeToken._id, 
                                     thoiGian : new Date(), 
@@ -182,10 +187,7 @@ class SettlementController{
                     .populate('account')
                     .then(function(customer){
                         var soDuSauTatToan = parseFloat(customer.account.soDu); 
-                        console.log(soDuSauTatToan);
-                        console.log(soTienTatToan);
-                        soDuSauTatToan = soDuSauTatToan + parseFloat(soTienTatToan);
-                        console.log(soDuSauTatToan);
+                        soDuSauTatToan = soDuSauTatToan + parseFloat(soTienTatToan.toFixed(2));
                         Customer.findById({
                             _id : decodeToken._id,
                         }).then(function(customer){
@@ -197,7 +199,12 @@ class SettlementController{
                                 Passbook.findByIdAndDelete({
                                     _id : mongoose.Types.ObjectId(req.params.id),
                                 }).then(function(){
-                                    const tenTK = executeCookie(req, 'getTenTK'); 
+                                    const tenTK = executeCookie(req, 'getTenTK');
+                                    req.session.message = {
+                                        type : 'success', 
+                                        intro: 'Thành công ! ',
+                                        message: `Đã tất toán thành công số tiền ${soTienTatToan.toFixed(2)} !`,
+                                    };
                                     History.create({
                                         customer : decodeToken._id, 
                                         thoiGian : new Date(), 
