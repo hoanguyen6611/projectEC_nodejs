@@ -14,7 +14,8 @@ router.post('/settingBankBook/managementTerm/:id/updateTerm/checkUpdateTerm', Ad
 router.get('/settingBankBook/managemnetTerm',AdminController.managemnetTerm)
 router.get('/managementUser', AdminController.managementUser);
 router.get('/managementUser/:id/deleteUser',AdminController.deleteUser);
-router.post('/managementUser/:id/updateUser', AdminController.updateUser);
+router.get('/managementUser/:id/updateUser', AdminController.updateUser);
+router.post('/managementUser/:id/updateUser/checkUpdateUser', AdminController.checkUpdateUser);
 
 
 module.exports = router;

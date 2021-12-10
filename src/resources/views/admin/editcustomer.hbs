@@ -4,37 +4,46 @@
             <img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636260329/249000531_905697440068131_6669106597424658124_n_fbahjd.jpg"
                 alt="" class="icon-logo">
         </div>
-        <h3 class="text-color text-center mt-5">Thông tin cá nhân</h3>
-        <form method="GET" class="mt-4" action="/">
-            <input type="hidden" class="form-control label-text" name="id" value="{{customer._id}}">
+        {{#if message}}
+                <div style="text-align: center" class="alert alert-{{message.type}}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{message.intro}}</strong> {{message.message}}
+                </div>
+        {{/if}}
+        {{#if customer}}
+        <h3 class="text-color text-center mt-5">Cập nhật gói tiết kiệm</h3>
+        <form method="POST" class="mt-4" action="/admin/managementUser/{{customer._id}}/updateUser/checkUpdateUser" id = "update">
+            <div class="form-group">
+                <label class="label-name">Tên khách hàng :</label>
+                <input type="text" class="form-control label-text" name="tenKH" value = "{{customer.tenKH}}"> 
+            </div>
 
             <div class="form-group">
-                <label class="label-name">Họ và tên:</label>
-                <input type="text" class="form-control label-text" name="tenKH" value="{{customer.tenKH}}" readonly="readonly"> 
+                <label class="label-name">Email :</label>
+                <input type="text" class="form-control label-text" name="email" value = "{{customer.email}}">
             </div>
+            
             <div class="form-group">
-                <label class="label-name">Ngày sinh:</label>
-                <input type="text" class="form-control label-text" name="ngaySinh" placeholder="Nhập ngày sinh của bạn"
-                    value="{{customer.ngaySinh}}" id="txtNgayThangNamSinh" readonly="readonly">
+                <label class="label-name">CCCD :</label>
+                <input type="text" class="form-control label-text" name="CCCD" value = "{{customer.CCCD}}">
             </div>
+            
             <div class="form-group">
-                <label class="label-name">CMND/CCCD:</label>
-                <input type="text" class="form-control label-text" name="CCCD" placeholder="Nhập CCCD của bạn"
-                    value="{{customer.CCCD}}" readonly="readonly">
+                <label class="label-name">Mật khẩu :</label>
+                <input type="text" class="form-control label-text" name="password" value = "{{customer.password}}">
             </div>
+
             <div class="form-group">
-                <label class="label-name">Email:</label>
-                <input type="email" class="form-control label-text" name="email" placeholder="Nhập email của bạn"
-                    value="{{customer.email}}">
-            </div>
-            <div class="form-group">
-                <label class="label-name">Số tài khoản ngân hàng:</label>
-                <input type="text" class="form-control label-text" name="soTK" placeholder="Nhập số tài khoản ngân hàng"
-                    value="{{customer.soTK}}" readonly="readonly">
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Cập nhập</button>
+                <label class="label-name">Quyền :</label>
+                <input type="text" class="form-control label-text" name="quyen" value = "{{customer.quyen}}">
             </div>
         </form>
-    </div>
+        
+        <form method="GET" class="mt-4" action="/admin/managementUser" id = "cancel"></form>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" form = "update">Cập nhật</button>
+                <button type="submit" class="btn btn-danger" form = "cancel">Hủy thao tác</button>
+            </div>
+        {{/if}}
+        </div>
 </div>

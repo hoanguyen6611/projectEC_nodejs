@@ -301,9 +301,39 @@ class AdminController {
         })
     }
 
-    //[POST] : admin/managementUser/:id/updateUser/
+    //[GET] : admin/managementUser/:id/updateUser/
     updateUser(req, res, next){
-        
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin');
+        Customer.findById({
+            _id : req.params.id,
+        }).then(function(customer){
+            res.render('admin/editcustomer',{
+                customer : mongooseToObject(customer),
+                tenTK : tenTK, 
+                Admin : Admin,
+            })
+        })
+    }
+
+    //[POST] : admin/managementUser/:id/updateUser/checkUpdateUser 
+    checkUpdateUser(req, res, next){
+        Customer.findByIdAndUpdate({
+            _id : req.params.id,
+        }, {
+            tenKH : req.body.tenKH, 
+            email : req.body.email, 
+            CCCD : req.body.CCCD, 
+            password : req.body.password, 
+            quyen : req.body.quyen,
+        }).then(function(){
+            req.session.message = {
+                type: 'success',
+                intro: 'Thành công !',
+                message: `Cập nhật người dùng thành công !`,
+            }; 
+            res.redirect('/admin/managementUser')
+        })
     }
 }
 
