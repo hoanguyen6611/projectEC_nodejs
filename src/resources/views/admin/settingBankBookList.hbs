@@ -1,0 +1,43 @@
+<div class="container">
+    {{#if message}}
+                <div style="text-align: center" class="alert alert-{{message.type}}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{message.intro}}</strong> {{message.message}}
+                </div>
+    {{/if}}
+    <div class="row">
+        
+            <div class="col-sm-6 col-lg-4 min-height mb-4">
+                <div class="card card-course-item">
+                    <a href="/admin/createBankBook">
+                        <img src="https://thumbs.dreamstime.com/b/icon-bankbook-account-bankbook-148588701.jpg" class="card-img-top img-course" alt="Hình ảnh đại diện">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title size text-center color-text">Tạo gói tiết kiệm</h5>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-sm-6 col-lg-4 min-height mb-4">
+                <div class="card card-course-item">
+                    <a href="/admin/addInterestRate">
+                        <img src="https://icon-library.com/images/interest-rate-icon/interest-rate-icon-20.jpg" class="card-img-top img-course" alt="Hình ảnh đại diện">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title size text-center color-text">Thêm lãi suất cho các gói tiết kiệm</h5>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-sm-6 col-lg-4 min-height mb-4">
+                <div class="card card-course-item">
+                    <a href="#">
+                        <img src="https://images.cdn1.stockunlimited.net/preview1300/bank-account-passbook_1277559.jpg" class="card-img-top img-course" alt="Hình ảnh đại diện">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title size text-center color-text">Gói {{this.term.tenGoiTietKiem}}</h5>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

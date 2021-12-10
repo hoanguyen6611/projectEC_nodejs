@@ -17,8 +17,22 @@ class HistoryController {
 
     //[GET] : /history 
     history(req, res, next) {
+        var Admin = ''
         const token = executeCookie(req, 'getToken'); 
         const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        Customer.findOne({
+            _id : decodeToken._id,
+        })
+        .then(function(customer){
+            Admin = customer.quyen; 
+            if (Admin == 'Admin'){
+                Admin = true;
+            }
+            else 
+            {
+                Admin = false;
+            }
+        })
         History.find({
             customer : decodeToken._id,
         })
@@ -28,6 +42,7 @@ class HistoryController {
             res.render('customer/transactionhis', {
                 historyList : mutipleMongooseToObject(historyList),
                 tenTK : tenTK,
+                Admin : Admin,
             });
         })
     };

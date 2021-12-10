@@ -59,10 +59,10 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 
 // Cập nhật kiểm tra liên tục kỳ hạn tất toán cho tất cả các sổ : 
 const SystemController = require('./app/controllers/SystemController');
-// const node_Cron = require('node-cron')
-// node_Cron.schedule('0 0 0 * * *', () => {
-//     SystemController.expire();
-// })
+const node_Cron = require('node-cron')
+node_Cron.schedule('0 0 0 * * *', () => {
+    SystemController.expire();
+})
 
 // route init
 route(app);

@@ -1,19 +1,38 @@
 const jwt = require('jsonwebtoken')
-const CustomerModel = require('../models/customer.model')
+const Customer = require('../models/customer.model')
 const executeCookie = require('../../middleware/executeCookie.mdw')
 require('dotenv').config()
 
 class SiteController {
     //[GET] /home
     index(req, res, next) {
-        const tenTK = executeCookie(req, 'getTenTK'); 
-        res.render('home', {tenTK : tenTK});
+        const token = executeCookie(req, 'getToken');
+        if (token){
+            const tenTK = executeCookie(req, 'getTenTK');  
+            const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+            Customer.findOne({
+                _id : decodeToken._id, 
+            }) 
+            .then(function(customer){
+                var Admin = customer.quyen; 
+                if (Admin == 'Admin'){
+                    Admin = true;
+                }
+                else 
+                {
+                    Admin = false;
+                }
+                res.render('home'), {
+                    tenTK : tenTK,
+                    Admin : Admin,
+                }
+            })
+        }
+        else{
+            res.render('home');
+        }
+        
     };
-    //[GET] /home/admin
-    admin(req, res, next) { 
-        res.render('admin/admincustomer');
-    };
-
 }
 //Public ra ngoài
 module.exports = new SiteController();

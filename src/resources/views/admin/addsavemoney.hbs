@@ -4,27 +4,39 @@
             <img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636260329/249000531_905697440068131_6669106597424658124_n_fbahjd.jpg"
                 alt="" class="icon-logo">
         </div>
+        {{#if message}}
+                <div style="text-align: center" class="alert alert-{{message.type}}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{message.intro}}</strong> {{message.message}}
+                </div>
+        {{/if}}
         <h3 class="text-color text-center mt-5">Tạo gói tiết kiệm</h3>
-        <form method="GET" class="mt-4" action="/">
-            <input type="hidden" class="form-control label-text" name="id" value="{{customer._id}}">
+        <form method="POST" class="mt-4" action="/admin/createBankBook/checkCreatBankBook" id = "create">
+            <div class="form-group">
+                <label class="label-name">Tên gói :</label>
+                <input type="text" class="form-control label-text" name="tenGoiTietKiem"> 
+            </div>
 
             <div class="form-group">
-                <label class="label-name">Tên gói</label>
-                <input type="text" class="form-control label-text" name="tengoi" value="" readonly="readonly"> 
+                <label class="label-name">Lãi suất :</label>
+                <input type="text" class="form-control label-text" name="laiSuat">
             </div>
+            
             <div class="form-group">
-                <label class="label-name">Kỳ hạn</label>
-                <input type="text" class="form-control label-text" name="kyhan" placeholder=""
-                    value="" id="" readonly="readonly">
+                <label class="label-name">Mô tả gói tiết kiệm :</label>
+                <input type="text" class="form-control label-text" name="description">
             </div>
+            
             <div class="form-group">
-                <label class="label-name">Lãi suất</label>
-                <input type="text" class="form-control label-text" name="laisuat" placeholder=""
-                    value="" readonly="readonly">
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Thêm gói</button>
+                <label class="label-name">Link hình ảnh :</label>
+                <input type="text" class="form-control label-text" name="image">
             </div>
         </form>
+        <form method="GET" class="mt-4" action="/admin/settingBankBook" id = "cancel"></form>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" form = "create">Thêm gói</button>
+                <button type="submit" class="btn btn-danger" form = "cancel">Hủy thao tác</button>
+            </div>
+        
     </div>
 </div>

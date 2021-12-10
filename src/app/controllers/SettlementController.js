@@ -34,11 +34,13 @@ class SettlementController{
             .then(
                 function(passbook){
                     const tenTK = executeCookie(req, 'getTenTK'); 
+                    const Admin = executeCookie(req, 'checkAdmin');
                     res.render('customer/settlementList', 
                     {soTK : cus_Info.soTK, 
                      soDu : cus_Info.account.soDu,
                      passbooks : mutipleMongooseToObject(passbook),
                      tenTK : tenTK,
+                     Admin : Admin,
                     })
                 }
             )
@@ -75,6 +77,7 @@ class SettlementController{
             var laiTamTinh = parseFloat(passbook.soTienGui) + parseFloat((parseFloat(passbook.interestRate.laiSuat) * parseFloat(passbook.soTienGui)).toFixed(2));
             var kyHanVaLaiSuat = passbook.interestRate.kyHan + ' / '+ (parseFloat(passbook.interestRate.laiSuat) * 100).toFixed(1).toString() + '%';
             const tenTK = executeCookie(req, 'getTenTK'); 
+            const Admin = executeCookie(req, 'checkAdmin')
             res.render('customer/accountsavedetail', {
                 soTienGui : passbook.soTienGui,
                 phanTramHienThi : phanTramHienThi, 
@@ -86,6 +89,7 @@ class SettlementController{
                 kyHanVaLaiSuat : kyHanVaLaiSuat, 
                 passbookId : passbook._id,
                 tenTK : tenTK,
+                Admin : Admin,
             });
         })
     }

@@ -14,6 +14,7 @@ const customerSchema = new Schema({
     CCCD : {type : String, maxlength : 255}, 
     password : {type : String, maxlength : 255, required : true},
     soTK : {type : String, maxlength : 255},
+    quyen : {type : String, maxlength : 255},
     account : {type : mongoose.Schema.Types.ObjectId, maxlength : 255, ref : 'account'},
 }, {
     collection : 'Customer'

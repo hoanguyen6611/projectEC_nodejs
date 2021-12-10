@@ -18,6 +18,12 @@ module.exports = function(req, stringQuery){
             else if (stringQuery == 'getTenTK'){
                 return valueIndexInCookie[0];
             }
+            else if (stringQuery == 'checkAdmin'){
+                if (valueIndexInCookie[2] == 'true'){
+                    return true;
+                }
+                return false;
+            }
         }
         return null;
     }

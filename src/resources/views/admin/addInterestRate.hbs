@@ -1,0 +1,96 @@
+<div class="v1">
+        <div class="accountsavebank ">
+            {{#if message}}
+                <div style="text-align: center" class="alert alert-{{message.type}}">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{message.intro}}</strong> {{message.message}}
+                </div>
+            {{/if}}
+            <form method = "POST" action = "/admin/addInterestRate/checkAddInterestRate" id = "Accept">
+            <input type = "hidden" name = "soTK" value = "{{soTK}}">
+            <input type = "hidden" name = "soDu" value = "{{soDu}}">
+            <input type = "hidden" name = "termId" value = "{{termId}}">
+            <div class="accountsaves-item inline-block mt-4">
+                <h5>Thông tin lãi suất của các gói tiết kiệm :</h5>
+                <br>
+                <select class="custom-select" id="luaChonGoiTietKiem" onChange="update()">
+                    <option selected value = " ">Chọn gói tiết kiệm muốn thêm</option>
+                    {{#if terms}}
+                    {{#each terms}}
+                    <option value={{this.laiSuat}}>Gói {{this.tenGoiTietKiem}}</option>
+                    {{/each}}
+                    {{/if}}
+                </select>
+                <br>
+                <select class="custom-select" id="luaChonKyHan" onChange="update()">
+                    <option selected value = "">Kỳ hạn</option>
+                    <option value= "3">3 Tháng</option>
+                    <option value= "6">6 Tháng</option>
+                    <option value= "9">9 Tháng</option>
+                    <option value= "12">12 Tháng</option>
+                </select>
+                <br>
+                <br>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Lãi suất </span>
+                    </div>
+                    <input class="form-control" aria-label="With textarea" id = "laiSuat" name = "laiSuat"  readonly="readonly">
+                    <input type = "hidden" id = "tenLaiSuat" name = "tenLaiSuat"  readonly="readonly">
+                    <input type = "hidden" id = "tenGoi" name = "tenGoi"  readonly="readonly">
+                </div>
+                <br>
+                </form>
+                
+                <script type="text/javascript">
+                    function update() {
+
+                        var select = document.getElementById('luaChonGoiTietKiem');
+                        var option = select.options[select.selectedIndex];
+                        
+                        var laiSuat = option.value; 
+                        document.getElementById('tenGoi').value = option.text;
+
+                        var select = document.getElementById('luaChonKyHan');
+                        var option = select.options[select.selectedIndex];
+
+                        var kyHan = option.value;
+                        
+                        if (kyHan == '3' && laiSuat != null){
+                            var laiSuatTuongUng = parseFloat(laiSuat) * parseFloat((3 / 12).toFixed(2))
+                            const convert = (parseFloat(laiSuatTuongUng) * 100).toFixed(1);
+                            document.getElementById('laiSuat').value = convert + '%';
+                            document.getElementById('tenLaiSuat').value = option.text;
+                        }
+                        else if (kyHan == '6' && laiSuat != null){
+                            var laiSuatTuongUng = parseFloat(laiSuat) * parseFloat((6 / 12).toFixed(2))
+                            const convert = (parseFloat(laiSuatTuongUng) * 100).toFixed(1);
+                            document.getElementById('laiSuat').value = convert + '%';
+                            document.getElementById('tenLaiSuat').value = option.text;
+                        } 
+                        else if (kyHan == '9' && laiSuat != null){
+                            var laiSuatTuongUng = parseFloat(laiSuat) * parseFloat((9 / 12).toFixed(2))
+                            const convert = (parseFloat(laiSuatTuongUng) * 100).toFixed(1);
+                            document.getElementById('laiSuat').value = convert + '%';
+                            document.getElementById('tenLaiSuat').value = option.text;
+                        } 
+                        else if (kyHan == '12' && laiSuat != null){
+                            var laiSuatTuongUng = parseFloat(laiSuat) * parseFloat((12 / 12).toFixed(2))
+                            const convert = (parseFloat(laiSuatTuongUng) * 100).toFixed(1);
+                            document.getElementById('laiSuat').value = convert + '%';
+                            document.getElementById('tenLaiSuat').value = option.text;
+                        } 
+                        else {
+                            document.getElementById('laiSuat').value = 'Vui lòng điền đầy đủ thông tin !';
+                        }
+                    }
+                    update();
+                </script>
+                <form method="GET" class="mt-4" action="/admin/settingBankBook" id = "cancel"></form>
+                <div class="mt-5 d-flex justify-content-around">
+                    <button type="submit" class="btn btn-dark" form = "Accept">Thêm lãi suất</button>
+                    <button type="submit" class="btn" form = "cancel">Hủy bỏ</button>
+                </div>
+            </div>
+        </div>
+</div>
