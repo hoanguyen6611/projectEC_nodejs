@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    {{#if message}}
+        <div style="text-align: center" class="alert alert-{{message.type}}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message.intro}}</strong> {{message.message}}
+        </div>
+    {{/if}}
+    {{#if terms}}
+   <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Tên gói tiết kiệm</th>
+                <th scope="col">Lãi suất</th>
+                <th scope="col">Cài đặt</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each terms}}
+            <tr>
+                <td>{{this.tenGoiTietKiem}}</td>
+                <td>{{this.laiSuat}}</td>
+                <td>
+                    <a href="/admin/settingBankBook/managementTerm/{{this._id}}/updateTerm" class="btn btn-success" title="Cập nhập"><i
+                            class="far fa-edit"></i></a>
+                    <a href="/admin/settingBankBook/managementTerm/{{this._id}}/deleteTerm" class="btn btn-danger"  title="Xoá"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+</div>

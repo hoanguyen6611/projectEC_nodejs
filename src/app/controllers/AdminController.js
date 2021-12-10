@@ -37,6 +37,65 @@ class AdminController {
         })
     }
 
+    //[GET] : admin/settingBankBook/managementTerm 
+    managemnetTerm(req, res, next){
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin');
+        Term.find().then(function(terms){
+            res.render('admin/configPassbook', {
+                terms : mutipleMongooseToObject(terms),
+                tenTK : tenTK, 
+                Admin : Admin,
+                message : req.session.message,
+            })
+        })
+    }
+
+    //[POST] : admin/settingBankBook/managementTerm/:id/updateTerm
+    updateTerm(req, res, next){
+        
+    }
+
+    //[GET] : admin/settingBankBook/managementTerm/:id/deleteTerm
+    deleteTerm(req, res, next){
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin');
+        Passbook.findOne({
+            term : req.params.id,
+        }).then(function(passbook){
+            if (passbook){
+                req.session.message = {
+                    type: 'danger',
+                    intro: 'Thất bại !',
+                    message: `Hiện tại vẫn còn khách hàng sử dụng dịch vụ nên không thể thực hiện thao tác này !`,
+                }
+                res.redirect('/admin/settingBankBook/managemnetTerm');
+            }
+            else{
+                InterestRate.find({
+                    term : req.params.id,
+                }).then(function(interestRates){
+                    interestRates.forEach(myFunction);
+                    function myFunction(item){
+                        InterestRate.findByIdAndDelete({
+                            _id : item._id,
+                        })
+                    }
+                    Term.findByIdAndDelete({
+                        _id : req.params.id,
+                    }).then(function(){
+                        req.session.message = {
+                            type: 'success',
+                            intro: 'Thành công !',
+                            message: `Xóa gói dịch vụ thành công !`,
+                        }
+                        res.redirect('/admin/settingBankBook/managemnetTerm');
+                    })
+                })
+            }
+        })
+    }
+
     //[POST] : admin/checkCreateBankBook 
     checkCreateBankBook(req, res, next){
         const tenTK = executeCookie(req, 'getTenTK'); 
@@ -77,7 +136,6 @@ class AdminController {
                 })
             }
         })
-        
     }
 
     //[GET] : admin/addInterestRate 
@@ -210,6 +268,11 @@ class AdminController {
                 })
             }
         })
+    }
+
+    //[POST] : admin/managementUser/:id/updateUser/
+    updateUser(req, res, next){
+        
     }
 }
 
