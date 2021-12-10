@@ -1,36 +1,37 @@
 <div class="container mt-5">
-    <div class="mb-3">
-        <button type="button" class="btn btn-outline-dark">Quản lý các gói tiết kiệm</button>
-        <button type="button" class="btn btn-outline-dark">Quản lý khách hàng</button>
-        <button type="button" class="btn btn-outline-dark">Quản lý nguồn tiền</button>
-    </div>
+    {{#if message}}
+        <div style="text-align: center" class="alert alert-{{message.type}}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message.intro}}</strong> {{message.message}}
+        </div>
+    {{/if}}
    <table class="table mt-4">
         <thead>
             <tr>
-                <th scope="col" colspan="2"></th>
                 <th scope="col">Họ và tên</th>
                 <th scope="col">Tên đăng nhập</th>
                 <th scope="col" >Email</th>
                 <th scope="col" >Ngày sinh</th>
                 <th scope="col" >CCCD</th>
-                <th scope="col" >Số tài khoản</th>
+                <th scope="col" >Cài đặt</th>
             </tr>
         </thead>
+        {{#if customers}}
+        {{#each customers}}
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>{{this.tenKH}}</td>
+                <td>{{this.tenTK}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.ngaySinh}}</td>
+                <td>{{this.CCCD}}</td>
                 <td>
-                    <a href="/courses/{{this._id}}/edit" class="btn btn-success" title="Cập nhập"><i
-                            class="far fa-edit"></i></a>
-                    <a href="" class="btn btn-danger" data-toggle="modal" data-target="#delete-course-modal"
-                        data-id="{{this._id}}" title="Xoá"><i class="fas fa-trash-alt"></i></a>
+                    <a href="/admin/managementUser/#" class="btn btn-success" title="Cập nhập"><i class="far fa-edit"></i></a>
+                    <a href="/admin/managementUser/{{this._id}}/deleteUser" class="btn btn-danger" title="Xoá"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         </tbody>
+        {{/each}}
+        {{/if}}
     </table>
 </div>

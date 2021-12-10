@@ -154,10 +154,63 @@ class AdminController {
         })
     }
 
-    //[GET] : admin/ManageUser/ 
-    
+    //[GET] : admin/managementUser/ 
+    managementUser(req, res, next){
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin');
+        Customer.find().then(function(customers){
+            res.render('admin/admincustomer',{
+                customers : mutipleMongooseToObject(customers),
+                tenTK : tenTK, 
+                Admin : Admin,
+                message : req.session.message,
+            });
+        })
+    }
 
-    
+    //[GET] : admin/managementUser/:id/deleteUser/ 
+    deleteUser(req, res, next){
+        Passbook.findOne({
+            customer : req.params.id, 
+        }).then(function(passbook){
+            if(passbook){
+                req.session.message = {
+                    type: 'danger',
+                    intro: 'Lỗi !',
+                    message: `Vui lòng yêu cầu khách hàng hãy tất toán hết các gói tiết kiệm trước khi xóa !`,
+                }; 
+                res.redirect('/admin/managementUser');
+            }
+            else{
+                Customer.findOne({
+                    _id : req.params.id, 
+                })
+                .populate('account')
+                .then(function(customer){
+                    if(parseFloat(customer.account.soDu) > 0 ){
+                        req.session.message = {
+                            type: 'danger',
+                            intro: 'Lỗi !',
+                            message: `Vui lòng yêu cầu khách hàng rút hết số tiền trong tài khoản trước khi xóa !`,
+                        }; 
+                        res.redirect('/admin/managementUser')
+                    }
+                    else {
+                        Customer.findOneAndDelete({
+                            _id : req.params.id, 
+                        }).then(function(){
+                            req.session.message = {
+                                type: 'success',
+                                intro: 'Thành công !',
+                                message: `Xóa thành công !`,
+                            }; 
+                            res.redirect('/admin/managementUser')
+                        })
+                    }
+                })
+            }
+        })
+    }
 }
 
 module.exports = new AdminController();
