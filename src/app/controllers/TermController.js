@@ -76,14 +76,25 @@ class TermController {
     checkSavingMoney(req, res, next){
 
         const soDu = parseFloat(req.body.soDu);
-        const tienGui = parseFloat(req.body.tienGui);
+
+        var tienGui = 0;
+        var ngayDaoHan = '';
+
+        if (req.body.ngayDaoHan != ''){
+            ngayDaoHan = req.body.ngayDaoHan;
+        }
+
+        if (req.body.tienGui != ''){
+            tienGui = parseFloat(req.body.tienGui);
+        }
+
         const laiSuat = parseFloat(parseFloat(req.body.laiSuat) / 100).toFixed(3);
         const ngayGui = req.body.ngayDaoHan.split(' / ');
         const ngay = ngayGui[0]; 
         const thang = ngayGui[1];
         const nam = ngayGui[2];
-
-        if (req.body.tienGui === '' || req.body.laiSuat === '' || req.body.ngayDaoHan === '' || tienGui === 0){
+        
+        if (ngayDaoHan == '' || parseInt(tienGui) == 0){
             req.session.message = {
                 type: 'danger',
                 intro: 'Lỗi ! ',

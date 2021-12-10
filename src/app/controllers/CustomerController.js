@@ -202,19 +202,13 @@ class CustomerController {
     showInfomationOfAccount(req, res, next){
         const token = executeCookie(req, 'getToken'); 
         const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin'); 
         const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-        Customer.findOne({
+        Customer.findById({
             _id : decodeToken._id, 
         }) 
         .then(function(customer){
-            var Admin = customer.quyen; 
-                if (Admin == 'Admin'){
-                    Admin = true;
-                }
-                else 
-                {
-                    Admin = false;
-                }
+            console.log(customer)
             res.render('customer/profile'), {
                 customer : mongooseToObject(customer),
                 tenTK : tenTK,
