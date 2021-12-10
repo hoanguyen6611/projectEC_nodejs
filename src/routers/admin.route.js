@@ -10,6 +10,7 @@ router.get('/addInterestRate', AdminController.addInterestRate);
 router.post('/addInterestRate/checkAddInterestRate', AdminController.checkAddInterestRate);
 router.get('/settingBankBook/managementTerm/:id/deleteTerm', AdminController.deleteTerm);
 router.get('/settingBankBook/managementTerm/:id/updateTerm', AdminController.updateTerm);
+router.post('/settingBankBook/managementTerm/:id/updateTerm/checkUpdateTerm', AdminController.checkUpdateTerm);
 router.get('/settingBankBook/managemnetTerm',AdminController.managemnetTerm)
 router.get('/managementUser', AdminController.managementUser);
 router.get('/managementUser/:id/deleteUser',AdminController.deleteUser);

@@ -51,15 +51,46 @@ class AdminController {
         })
     }
 
-    //[POST] : admin/settingBankBook/managementTerm/:id/updateTerm
+    //[GET] : admin/settingBankBook/managementTerm/:id/updateTerm
     updateTerm(req, res, next){
-        
+
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin');
+
+        Term.findById({
+            _id : req.params.id,
+        }).then(function(term){
+            res.render('admin/updatesavemoney', {
+                tenTK : tenTK, 
+                Admin : Admin, 
+                term : mongooseToObject(term),
+            })
+        })
+    }
+
+    //[POST] : admin/settingBankBook/managementTerm/:id/updateTerm/checkUpdateTerm 
+    checkUpdateTerm(req, res, next){
+            
+        Term.findByIdAndUpdate({
+            _id : req.params.id,
+        },{
+            tenGoiSanPham : req.body.tenGoiSanPham, 
+            image : req.body.image, 
+            laiSuat : req.body.laiSuat, 
+            description : req.body.description,
+        }).then(function(){
+            req.session.message = {
+                type: 'success',
+                intro: 'Thành công !',
+                message: `Cập nhật gói tiết kiệm thành công !`,
+            }
+            res.redirect('/admin/settingBankBook/managemnetTerm');
+        })
     }
 
     //[GET] : admin/settingBankBook/managementTerm/:id/deleteTerm
     deleteTerm(req, res, next){
-        const tenTK = executeCookie(req, 'getTenTK'); 
-        const Admin = executeCookie(req, 'checkAdmin');
+        
         Passbook.findOne({
             term : req.params.id,
         }).then(function(passbook){
