@@ -208,11 +208,89 @@ class CustomerController {
             _id : decodeToken._id, 
         }) 
         .then(function(customer){
-            console.log(customer)
-            res.render('customer/profile'), {
+            Customer.findById({
+                _id : customer._id,
+            }).then(function(customer){
+                console.log(customer)
+                res.render('customer/profile'), {
                 customer : mongooseToObject(customer),
                 tenTK : tenTK,
                 Admin : Admin,
+            }
+            })
+        })
+    }
+
+    //[GET] : customer//resetPassword : 
+    resetPassword(req, res, next){
+        const tenTK = executeCookie(req, 'getTenTK'); 
+        const Admin = executeCookie(req, 'checkAdmin'); 
+        const token = executeCookie(req, 'getToken'); 
+        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        Customer.findById({
+            _id : decodeToken._id, 
+        }).then(function(customer){
+            res.render('customer/changePassword', {
+                tenTK : tenTK, 
+                Admin : Admin, 
+                id : customer._id, 
+                message : req.session.message,
+            })
+        })
+    }
+
+    //[POST] : customer/:id/checkResetPassword : 
+    checkResetPassword(req, res, next){
+        const currentPassword = req.body.currentPassword;
+        const newPassword_1 = req.body.newPassword_1;
+        const newPassword_2 = req.body.newPassword_2;
+        Customer.findById({
+            _id : req.params.id, 
+        }).then(function(customer){
+            if(customer.password == currentPassword)
+            {
+                if(newPassword_1 == newPassword_2){
+                    if(customer.password == newPassword_2){
+                        req.session.message = {
+                            type: 'danger',
+                            intro: 'Thất bại !',
+                            message: `Mật khẩu mới nhập trùng với mật khẩu cũ !`,
+                        }
+                        res.redirect('/customer/resetPassword'); 
+                    }
+                    else
+                    {
+                        Customer.findByIdAndUpdate({
+                            _id : req.params.id,
+                        },{
+                            password : newPassword_1,
+                        }).then(function(customer){
+                            req.session.message = {
+                                type: 'success',
+                                intro: 'Thành công !',
+                                message: `Thay đổi mật khẩu thành công !`,
+                            }
+                            res.redirect('/customer/myAccount'); 
+                        })
+                    }
+                }
+                else{
+                    req.session.message = {
+                        type: 'danger',
+                        intro: 'Thất bại !',
+                        message: `Mật khẩu mới nhập không tương thích !`,
+                    }
+                    res.redirect('/customer/resetPassword'); 
+                }
+            }
+            else
+            {
+                req.session.message = {
+                    type: 'danger',
+                    intro: 'Thất bại !',
+                    message: `Mật khẩu hiện tại nhập không đúng !`,
+                }
+                res.redirect('/customer/resetPassword'); 
             }
         })
     }

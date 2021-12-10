@@ -12,5 +12,7 @@ router.post('/checkLogin', CustomerController.checkLogin);
 router.get('/myAccount', CustomerController.myAccount);
 router.get('/logout', CustomerController.logOut)
 router.get('/showInfomationOfAccount', CustomerController.showInfomationOfAccount);
+router.get('/resetPassword', CustomerController.resetPassword); 
+router.post('/:id/checkResetPassword', CustomerController.checkResetPassword);
 
 module.exports = router;
