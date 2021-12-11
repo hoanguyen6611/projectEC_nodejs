@@ -35,7 +35,6 @@
 
 .form-signin {
   display: flex;
-  background-color: #008c45;
   height: 585px;
 }
 
@@ -43,7 +42,7 @@
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 673px;
+  width: 450px;
   height: 350px;
   padding: 36px;
   background-color: #fff;
@@ -51,27 +50,17 @@
 
 .form-signup {
   display: flex;
-  background-color: #008c45;
   height: 625px;
-  margin-top: 50px;
 }
 
 .form-signup-item {
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 673px;
+  width: 500px;
   height: 550px;
   padding: 36px;
   background-color: #fff;
-}
-
-body {
-  /* background-color: #008c45; */
-}
-
-.text-color {
-  color: #008c45;
 }
 
 .label-name {
@@ -84,7 +73,6 @@ body {
 
 .profile {
   display: flex;
-  background-color: #008c45;
   height: 625px;
   margin-top: 50px;
 }
@@ -93,8 +81,17 @@ body {
   margin: auto;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 1000px;
-  height: 900px;
+  width: 700px;
+  height: 700px;
+  padding: 36px;
+  background-color: #fff;
+}
+.savemoney {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 500px;
+  height: 500px;
   padding: 36px;
   background-color: #fff;
 }
@@ -102,6 +99,10 @@ body {
 .icon {
   width: 30px;
   height: 30px;
+}
+.icons {
+  width: 40px;
+  height: 25px;
 }
 
 .icon-2 {
@@ -187,8 +188,7 @@ body {
   border-radius: 10px;
   margin-bottom: 10px;
   color: #000;
-  padding: 8px;
-  background-color: #54ff9f;
+  padding: 8px;;
 }
 
 .endow {
@@ -262,18 +262,13 @@ body {
   white-space: nowrap;
 }
 .fix-2 {
-  margin-left: -200px;
+  margin-left: -10px;
 }
-.icons8-search { 
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij4gICAgPHBhdGggZD0iTSA5IDIgQyA1LjE0NTg1MTQgMiAyIDUuMTQ1ODUxNCAyIDkgQyAyIDEyLjg1NDE0OSA1LjE0NTg1MTQgMTYgOSAxNiBDIDEwLjc0Nzk5OCAxNiAxMi4zNDUwMDkgMTUuMzQ4MDI0IDEzLjU3NDIxOSAxNC4yODEyNSBMIDE0IDE0LjcwNzAzMSBMIDE0IDE2IEwgMjAgMjIgTCAyMiAyMCBMIDE2IDE0IEwgMTQuNzA3MDMxIDE0IEwgMTQuMjgxMjUgMTMuNTc0MjE5IEMgMTUuMzQ4MDI0IDEyLjM0NTAwOSAxNiAxMC43NDc5OTggMTYgOSBDIDE2IDUuMTQ1ODUxNCAxMi44NTQxNDkgMiA5IDIgeiBNIDkgNCBDIDExLjc3MzI2OCA0IDE0IDYuMjI2NzMxNiAxNCA5IEMgMTQgMTEuNzczMjY4IDExLjc3MzI2OCAxNCA5IDE0IEMgNi4yMjY3MzE2IDE0IDQgMTEuNzczMjY4IDQgOSBDIDQgNi4yMjY3MzE2IDYuMjI2NzMxNiA0IDkgNCB6Ij48L3BhdGg+PC9zdmc+') 50% 50% no-repeat;
-  background-size: 100%; }
   .search-icon {
     margin-right: 100px;
   }
   .search-key {
     color: #000;
   }
-  
+  .opan {
+  }
