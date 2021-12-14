@@ -241,7 +241,7 @@ class CustomerController {
             })
     }
 
-    //[GET] : customer//resetPassword : 
+    //[GET] : customer/resetPassword : 
     resetPassword(req, res, next) {
         const tenTK = executeCookie(req, 'getTenTK');
         const Admin = executeCookie(req, 'checkAdmin');
@@ -267,9 +267,11 @@ class CustomerController {
         Customer.findById({
             _id: req.params.id,
         }).then(function (customer) {
-            if (customer.password == currentPassword) {
+            var kq = bcrypt.compareSync(currentPassword, customer.password);
+            if (kq == true) {
                 if (newPassword_1 == newPassword_2) {
-                    if (customer.password == newPassword_2) {
+                    var bol = bcrypt.compareSync(newPassword_2, customer.password);
+                    if (bol == true) {
                         req.session.message = {
                             type: 'danger',
                             intro: 'Thất bại !',
@@ -278,10 +280,12 @@ class CustomerController {
                         res.redirect('/customer/resetPassword');
                     }
                     else {
+                        const salt = bcrypt.genSaltSync(10);
+                        const passwordNew = bcrypt.hashSync(newPassword_1, salt);
                         Customer.findByIdAndUpdate({
                             _id: req.params.id,
                         }, {
-                            password: newPassword_1,
+                            password: passwordNew,
                         }).then(function (customer) {
                             req.session.message = {
                                 type: 'success',
@@ -337,7 +341,7 @@ class CustomerController {
                     const pass = String(passNew);
                     const salt = bcrypt.genSaltSync(10);
                     const password1 = bcrypt.hashSync(pass, salt);
-                    customer.password =password1;
+                    customer.password = password1;
                     customer.save();
                     const email = customer.email;
                     var mailOptions = {
@@ -345,15 +349,15 @@ class CustomerController {
                         to: email,
                         subject: 'Đặt lại mật khẩu',
                         text: `Mật khẩu mới của bạn là: ${passNew}`
-                      };
-                      
-                      transporter.sendMail(mailOptions, function(error, info){
+                    };
+
+                    transporter.sendMail(mailOptions, function (error, info) {
                         if (error) {
-                          console.log(error);
+                            console.log(error);
                         } else {
-                          res.render('customer/signin');
+                            res.render('customer/signin');
                         }
-                      });
+                    });
                 }
 
             })
