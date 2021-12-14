@@ -47,6 +47,25 @@
   padding: 36px;
   background-color: #fff;
 }
+.changepassword {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 450px;
+  height: 450px;
+  padding: 36px;
+  background-color: #fff;
+}
+
+.forgetpassword {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 450px;
+  height: 400px;
+  padding: 36px;
+  background-color: #fff;
+}
 
 .form-signup {
   display: flex;
