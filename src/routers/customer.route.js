@@ -3,11 +3,11 @@ const CustomerController = require('../app/controllers/CustomerController');
 const router = express.Router();
 const check = require('../middleware/checkAuth.mdw');
 
+router.post('/resetpass', CustomerController.resetPass);
 router.get('/signIn', CustomerController.signIn);
 router.get('/signUp', CustomerController.signUp); 
 router.post('/inputSignUp', CustomerController.inputSignUp)
 router.get('/forgetpass', CustomerController.forgetPass)
-
 router.put('/:id', CustomerController.addProfile);
 router.get('/countMe', CustomerController.showInfomation);
 router.post('/checkLogin', CustomerController.checkLogin);

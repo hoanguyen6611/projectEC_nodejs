@@ -98,7 +98,8 @@ class AdminController {
                 req.session.message = {
                     type: 'danger',
                     intro: 'Thất bại !',
-                    message: `Hiện tại vẫn còn khách hàng sử dụng dịch vụ nên không thể thực hiện thao tác này !`,
+                    message: `Hiện tại vẫn còn khách hàng sử dụng 
+                    dịch vụ nên không thể thực hiện thao tác này !`,
                 }
                 res.redirect('/admin/settingBankBook/managemnetTerm');
             }
@@ -266,7 +267,8 @@ class AdminController {
                 req.session.message = {
                     type: 'danger',
                     intro: 'Lỗi !',
-                    message: `Vui lòng yêu cầu khách hàng hãy tất toán hết các gói tiết kiệm trước khi xóa !`,
+                    message: `Vui lòng yêu cầu khách hàng 
+                    hãy tất toán hết các gói tiết kiệm trước khi xóa !`,
                 }; 
                 res.redirect('/admin/managementUser');
             }
@@ -280,7 +282,8 @@ class AdminController {
                         req.session.message = {
                             type: 'danger',
                             intro: 'Lỗi !',
-                            message: `Vui lòng yêu cầu khách hàng rút hết số tiền trong tài khoản trước khi xóa !`,
+                            message: `Vui lòng yêu cầu khách hàng rút 
+                            hết số tiền trong tài khoản trước khi xóa !`,
                         }; 
                         res.redirect('/admin/managementUser')
                     }

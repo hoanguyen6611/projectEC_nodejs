@@ -8,7 +8,8 @@ const { response } = require('express')
 const { mongooseToObject } = require('../../routers/utils/mongoose')
 const executeCookie = require('../../middleware/executeCookie.mdw')
 const checkAdminRole = require('../../middleware/checkAdminRole')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const sgMail = require('@sendgrid/mail');
 const { mutipleMongooseToObject } = require('../../routers/utils/mongoose')
 const paypal = require('paypal-rest-sdk');
 paypal.configure({
@@ -113,7 +114,6 @@ class CustomerController {
     checkLogin(req, res, next) {
         Customer.findOne({
             tenTK: req.body.userName,
-            password: req.body.password
         })
             .populate('account')
             .then(function (customer) {
@@ -125,23 +125,28 @@ class CustomerController {
                     else {
                         Admin = false;
                     }
-                    const token = jwt.sign({
-                        _id: customer._id
-                    }, process.env.ACCESS_TOKEN_SECRET)
-                    var tenTK = customer.tenTK;
-                    var tenKH = customer.tenKH;
-                    res.cookie('token', customer.tenTK + "/" + token + "/" + Admin, { expires: new Date(Date.now() + 24 * 3600000) });
-                    if (Admin == true) {
-                        res.render('home', {
-                            tenTK: tenTK,
-                            Admin: Admin,
-                            tenKH: tenKH,
-                        })
-                    }
-                    else {
-                        res.render('home', {
-                            tenTK: tenTK,
-                        })
+                    var kq = bcrypt.compareSync(req.body.password, customer.password);
+                    if (kq == true) {
+                        const token = jwt.sign({
+                            _id: customer._id
+                        }, process.env.ACCESS_TOKEN_SECRET)
+                        var tenTK = customer.tenTK;
+                        var tenKH = customer.tenKH;
+                        res.cookie('token', customer.tenTK + "/" + token + "/" + Admin,
+                            { expires: new Date(Date.now() + 24 * 3600000) });
+                        if (Admin == true) {
+                            res.render('home', {
+                                tenTK: tenTK,
+                                Admin: Admin,
+                                tenKH: tenKH,
+                            })
+                        }
+                        else {
+                            res.render('home', {
+                                tenTK: tenTK,
+                                tenKH: tenKH,
+                            })
+                        }
                     }
                 }
             }).catch(next)
@@ -150,7 +155,8 @@ class CustomerController {
     //[GET] : customer/myAccount : Hiển thị thông tin tài khoản 
     myAccount(req, res, next) {
         const token = executeCookie(req, 'getToken');
-        const decodeToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+        const decodeToken = jwt.verify(token,
+            process.env.ACCESS_TOKEN_SECRET);
         Customer.findById({
             _id: decodeToken._id,
         })
@@ -302,8 +308,37 @@ class CustomerController {
         res.redirect('/');
     }
     //[GET] : customer/forgetpass
-    forgetPass(req, res, next){
+    forgetPass(req, res, next) {
         res.render('customer/forgetpass')
+    }
+    //[POST] : customer/resetpass
+    resetPass(req, res, next) {
+        const key = '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';
+        sgMail.setApiKey(key);
+        Customer.findOne({
+            tenTK: req.body.userName,
+        })
+            .then(function (customer) {
+                if (customer == null) {
+                    res.render('customer/forgetpass', {
+                        message: 'Tên đăng nhập không tồn tại'
+                    })
+                }
+                else {
+                    const passNew = Math.floor(Math.random() * 1000000);
+                    const email = customer.email;
+                    // console.log(email);
+                    const msg = {
+                        to: '19119179@student.hcmute.edu.vn', // Change to your recipient
+                        from: 'hoahuy2606@gmail.com', // Change to your verified sender
+                        subject: 'Reset Password',
+                        text: 'New Password',
+                    };
+                    sgMail.send(msg);
+                    res.render('customer/signin');
+                }
+
+            }).catch(next)
     }
 }
 //Public ra ngoài

@@ -16,6 +16,7 @@
     </div>
     <div class="account fix-2">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{#if tenTK}}
         <li class="nav-item">
           <a href="/" class="nav-link fix"><img
               src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636773689/3643769_building_home_house_main_menu_icon_aslqav.png"
@@ -41,6 +42,7 @@
               src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636774198/352426_history_icon_hmtqo2.png"
               class="icon mr-2">Lịch sử</a>
         </li>
+        {{/if}}
         {{#if Admin}}
         <li class="nav-item">
           <a href="/admin/settingBankBook" class="nav-link fix"><i class="fas fa-money-bill mr-2"></i>Cài đặt gói tiết
