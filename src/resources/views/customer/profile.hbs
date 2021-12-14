@@ -10,9 +10,13 @@
                     <strong>{{message.intro}}</strong> {{message.message}}
                 </div>
         {{/if}}
-        {{#if customer}}
-        <h3 class="text-color text-center mt-5">Cập nhật gói tiết kiệm</h3>
+        {{!-- {{#if customer}} --}}
+        <h3 class="text-color text-center mt-5">Cập nhật thông tin cá nhân</h3>
         <form method="POST" class="mt-4" action="/admin/managementUser/{{customer._id}}/updateUser/checkUpdateUser" id = "update">
+            <div class="form-group">
+                <label class="label-name">Tên đăng nhập:</label>
+                <input type="text" class="form-control label-text" name="tenKH" value = "{{customer.tenTK}}"> 
+            </div>
             <div class="form-group">
                 <label class="label-name">Tên khách hàng :</label>
                 <input type="text" class="form-control label-text" name="tenKH" value = "{{customer.tenKH}}"> 
@@ -27,23 +31,13 @@
                 <label class="label-name">CCCD :</label>
                 <input type="text" class="form-control label-text" name="CCCD" value = "{{customer.CCCD}}">
             </div>
-            
-            <div class="form-group">
-                <label class="label-name">Mật khẩu :</label>
-                <input type="text" class="form-control label-text" name="password" value = "{{customer.password}}">
-            </div>
-
-            <div class="form-group">
-                <label class="label-name">Quyền :</label>
-                <input type="text" class="form-control label-text" name="quyen" value = "{{customer.quyen}}">
-            </div>
         </form>
         
         <form method="GET" class="mt-4" action="/admin/managementUser" id = "cancel"></form>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary" form = "update">Cập nhật</button>
-                <button type="submit" class="btn btn-danger" form = "cancel">Hủy thao tác</button>
+                <button type="submit" class="btn btn-dark" form = "update">Cập nhật</button>
+                <button type="submit" class="btn" form = "cancel">Hủy thao tác</button>
             </div>
-        {{/if}}
+        {{!-- {{/if}} --}}
         </div>
 </div>

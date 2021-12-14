@@ -10,6 +10,7 @@ const executeCookie = require('../../middleware/executeCookie.mdw')
 const checkAdminRole = require('../../middleware/checkAdminRole')
 const jwt = require('jsonwebtoken');
 const sgMail = require('@sendgrid/mail');
+const nodemailer = require('nodemailer');
 const { mutipleMongooseToObject } = require('../../routers/utils/mongoose')
 const paypal = require('paypal-rest-sdk');
 paypal.configure({
@@ -20,6 +21,14 @@ paypal.configure({
 
 
 require('dotenv').config()
+const transporter = nodemailer.createTransport({
+    // host: 'smtp.gmail.com',
+    service: 'gmail',
+    auth: {
+        user: 'cdhstore2@gmail.com',
+        pass: 'Hoa6161*nguyenhuy'
+    }
+})
 
 class CustomerController {
 
@@ -36,7 +45,7 @@ class CustomerController {
 
     //[GET] : customer/countMe : 
     showInfomation(req, res, next) {
-        res.render('customer/accountme')
+        res.render('customer/profile')
     }
 
     //[POST] : customer/inputSignUp : 
@@ -99,6 +108,7 @@ class CustomerController {
                                     customer.save();
                                 }
                             })
+
                     })
                     .then(function (customer) {
                         req.session.isAuthenticated = true;
@@ -313,8 +323,6 @@ class CustomerController {
     }
     //[POST] : customer/resetpass
     resetPass(req, res, next) {
-        const key = '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';
-        sgMail.setApiKey(key);
         Customer.findOne({
             tenTK: req.body.userName,
         })
@@ -326,19 +334,30 @@ class CustomerController {
                 }
                 else {
                     const passNew = Math.floor(Math.random() * 1000000);
+                    const pass = String(passNew);
+                    const salt = bcrypt.genSaltSync(10);
+                    const password1 = bcrypt.hashSync(pass, salt);
+                    customer.password =password1;
+                    customer.save();
                     const email = customer.email;
-                    // console.log(email);
-                    const msg = {
-                        to: '19119179@student.hcmute.edu.vn', // Change to your recipient
-                        from: 'hoahuy2606@gmail.com', // Change to your verified sender
-                        subject: 'Reset Password',
-                        text: 'New Password',
-                    };
-                    sgMail.send(msg);
-                    res.render('customer/signin');
+                    var mailOptions = {
+                        from: 'cdhstore2@gmail.com',
+                        to: email,
+                        subject: 'Đặt lại mật khẩu',
+                        text: `Mật khẩu mới của bạn là: ${passNew}`
+                      };
+                      
+                      transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                          console.log(error);
+                        } else {
+                          res.render('customer/signin');
+                        }
+                      });
                 }
 
-            }).catch(next)
+            })
+            .catch(next)
     }
 }
 //Public ra ngoài
