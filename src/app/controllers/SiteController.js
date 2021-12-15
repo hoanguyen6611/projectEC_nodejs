@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const Customer = require('../models/customer.model')
+const Term = require('../models/term.model')
 const executeCookie = require('../../middleware/executeCookie.mdw')
+const { mutipleMongooseToObject } = require('../../routers/utils/mongoose')
 require('dotenv').config()
 
 class SiteController {
@@ -33,6 +35,21 @@ class SiteController {
         }
         
     };
+    //[GET] /search
+    search(req, res, next){
+        const key = req.query.searchse;
+        console.log(key);
+        Term.find(
+            {
+                tenGoiTietKiem: { $regex: key }
+            })
+            .then(terms=>{
+                res.render('search', {
+                    terms : mutipleMongooseToObject(terms),
+                })
+            })
+
+    }
 }
 //Public ra ngoài
 module.exports = new SiteController();
