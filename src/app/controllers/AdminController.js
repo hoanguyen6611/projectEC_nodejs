@@ -143,7 +143,8 @@ class AdminController {
                 req.session.message = {
                     type: 'danger',
                     intro: 'Thất bại !',
-                    message: `Tên gói tiết kiệm bạn muốn tạo đã tồn tại vui lòng nhập 1 tên khác !`,
+                    message: `Tên gói tiết kiệm bạn muốn tạo đã tồn tại 
+                    vui lòng nhập 1 tên khác !`,
                 }
                 res.render('admin/addsavemoney', {
                     tenTK : tenTK, 
@@ -154,7 +155,8 @@ class AdminController {
             else {
                 Term.create({
                     tenGoiTietKiem : tenGoiTietKiem, 
-                    laiSuat : parseFloat((parseFloat(laiSuat[0]) / 100).toFixed(2)), 
+                    laiSuat : parseFloat((parseFloat(laiSuat[0]) / 100)
+                    .toFixed(2)), 
                     image : image, 
                     description : description,
                 })
@@ -327,7 +329,7 @@ class AdminController {
             tenKH : req.body.tenKH, 
             email : req.body.email, 
             CCCD : req.body.CCCD, 
-            password : req.body.password, 
+            ngaySinh : req.body.ngaySinh, 
             quyen : req.body.quyen,
         }).then(function(){
             req.session.message = {
