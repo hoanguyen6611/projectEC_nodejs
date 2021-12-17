@@ -158,6 +158,16 @@ class CustomerController {
                             })
                         }
                     }
+                    else{
+                        res.render('customer/signin',{
+                            error: "Mật khẩu không chính xác"
+                        })
+                    }
+                }
+                else {
+                    res.render('customer/signin',{
+                        error: "Tài khoản không tồn tại"
+                    })
                 }
             }).catch(next)
     }

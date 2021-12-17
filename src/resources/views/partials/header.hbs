@@ -52,22 +52,24 @@
               src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636774198/352426_history_icon_hmtqo2.png"
               class="icon mr-2">Lịch sử</a>
         </li>
+      </ul>
         {{/if}}
         {{/if}}
         {{#if tenTK}}
+        <div class="">
+          <a href="" class="btn" data-toggle="modal" data-target="#search" data-id="" title="Tìm kiếm"><i
+              class="fas fa-search"></i></a>
+        </div>
         {{else}}
-        <li class="nav-item">
-          <a href="/customer/signIn" class="nav-link fix">Đăng nhập</a>
-        </li>
-        <li class="nav-item">
-          <a href="/customer/signUp" class="nav-link fix">Đăng ký tài khoản</a>
-        </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fix-3">
+          <li class="nav-item">
+            <a href="/customer/signIn" class="nav-link fix">Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a href="/customer/signUp" class="nav-link fix" style="color:#3BB9FF">Đăng ký tài khoản</a>
+          </li>
+        </ul>
         {{/if}}
-      </ul>
-    </div>
-    <div class="">
-      <a href="" class="btn" data-toggle="modal" data-target="#search" data-id="" title="Tìm kiếm"><i
-          class="fas fa-search"></i></a>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">

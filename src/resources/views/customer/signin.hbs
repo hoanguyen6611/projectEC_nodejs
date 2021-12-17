@@ -4,15 +4,23 @@
             <img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636260329/249000531_905697440068131_6669106597424658124_n_fbahjd.jpg"
                 alt="" class="icon-logo">
         </div>
+        {{#if error}}
+        <div class=" alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{error}}
+        </div>
+        {{/if}}
         <form method="post" class="mt-4" action="/customer/checkLogin">
             <div class="form-group">
-                <input type="text" class="form-control"  name = "userName" placeholder="Tên đăng nhập">
+                <input type="text" class="form-control" name="userName" placeholder="Tên đăng nhập">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" name = "password" placeholder="Mật khẩu">
+                <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
             </div>
             <button type="submit" class="btn btn-secondary mt-2">Đăng nhập</button>
-            <a href="/customer/forgetpass" class="nav-link mt-2" style ="color:#000;">Quên tài khoản/mật khẩu?</a>
+            <a href="/customer/forgetpass" class="nav-link mt-2" style="color:#000;">Quên tài khoản/mật khẩu?</a>
         </form>
     </div>
 </div>

@@ -43,7 +43,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 450px;
-  height: 350px;
+  height: 400px;
   padding: 36px;
   background-color: #fff;
 }
@@ -289,5 +289,6 @@
   .search-key {
     color: #000;
   }
-  .opan {
+  .fix-3 {
+    margin-right: -300px;
   }
