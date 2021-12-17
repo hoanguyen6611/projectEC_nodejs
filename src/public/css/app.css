@@ -289,6 +289,11 @@
   .search-key {
     color: #000;
   }
+  .fix-4 {
+    position: relative;
+  }
   .fix-3 {
-    margin-right: -300px;
+    /* margin-right: -300px; */
+    position: fixed;
+    right: 20px;
   }
