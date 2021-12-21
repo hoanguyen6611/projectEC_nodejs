@@ -1,33 +1,33 @@
 [{
   "_id": {
-    "$oid": "61a0f5663d568a35eda54ed3"
-  },
-  "soTienGui": {
-    "$numberDecimal": "0"
-  },
-  "ngayGui": {
-    "$date": "2001-01-11T17:00:00Z"
-  },
-  "ngayDaoHan": {
-    "$date": "2001-11-01T17:00:00Z"
+    "$oid": "61ba17cd06aebbeadd87e4ff"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b946de23b1fc5388d82292"
+  },
+  "soTienGui": 100000,
+  "term": {
+    "$oid": "61a0f2453d568a35eda54ec1"
   },
   "interestRate": {
     "$oid": "61a0f4103d568a35eda54ec5"
   },
-  "term": {
-    "$oid": "61a0f2453d568a35eda54ec1"
-  }
-},{
+  "ngayGui": {
+    "$date": "2021-12-15T16:29:01.285Z"
+  },
+  "ngayDaoHan": {
+    "$date": "2022-04-15T00:00:00Z"
+  },
+  "__v": 0
+},
+{
   "_id": {
-    "$oid": "61a7209843d733d6664e4639"
+    "$oid": "61b947b423b1fc5388d822a8"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b946de23b1fc5388d82292"
   },
-  "soTienGui": 100000,
+  "soTienGui": 20000000,
   "term": {
     "$oid": "61a0f2453d568a35eda54ec1"
   },
@@ -35,20 +35,21 @@
     "$oid": "61a4d8edfd485e108b81c7e4"
   },
   "ngayGui": {
-    "$date": "2021-12-01T07:13:28.682Z"
+    "$date": "2021-12-15T01:41:08.293Z"
   },
   "ngayDaoHan": {
-    "$date": "2022-06-30T17:00:00Z"
+    "$date": "2022-07-15T00:00:00Z"
   },
   "__v": 0
-},{
+},
+{
   "_id": {
-    "$oid": "61a720a543d733d6664e4650"
+    "$oid": "61b8c3cc3c5b71bc8f90e58b"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b8c3373c5b71bc8f90e563"
   },
-  "soTienGui": 103800,
+  "soTienGui": 500000,
   "term": {
     "$oid": "61a0f2453d568a35eda54ec1"
   },
@@ -56,10 +57,10 @@
     "$oid": "61a0f4103d568a35eda54ec5"
   },
   "ngayGui": {
-    "$date": "2021-12-01T13:39:23.579Z"
+    "$date": "2021-12-14T16:18:20.910Z"
   },
   "ngayDaoHan": {
-    "$date": "2022-03-31T17:00:00Z"
+    "$date": "2022-04-14T00:00:00Z"
   },
   "__v": 0
 }]

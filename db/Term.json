@@ -1,11 +1,18 @@
 [{
   "_id": {
-    "$oid": "61a0f2453d568a35eda54ec1"
-  },
-  "tenGoiTietKiem": "Kỳ hạn thường"
-},{
-  "_id": {
     "$oid": "61a0f3753d568a35eda54ec2"
   },
-  "tenGoiTietKiem": "Saving Money"
+  "tenGoiTietKiem": "Saving Money",
+  "image": "https://www.vpbank.com.vn/-/media/vpbank-latest/1retail/picture/2-tiet-kiem/27-tiet-kiem-phat-loc/27-800-507.jpg",
+  "description": "Tiết kiệm Phát Lộc Thịnh Vượng phù hợp với những Khách hàng không có nhu cầu sử dụng tiền mặt thường xuyên và mong muốn được sinh lời cao nhất trên số tiền gửi.",
+  "laiSuat": "4.2%"
+},
+{
+  "_id": {
+    "$oid": "61a0f2453d568a35eda54ec1"
+  },
+  "tenGoiTietKiem": "Kỳ hạn thường",
+  "image": "https://www.vpbank.com.vn/-/media/vpbank-latest/1retail/picture/2-tiet-kiem/24-tiet-kiem-thuong/24-800x507.jpg",
+  "description": "Sản phẩm gửi tiết kiệm thường phù hợp với những khách hàng không có nhu cầu sử dụng tiền mặt thường xuyên và mong muốn được sinh lời trên số tiền gửi.",
+  "laiSuat": "3.8%"
 }]

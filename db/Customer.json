@@ -1,20 +1,87 @@
-[{
-  "_id": {
-    "$oid": "61977307a599b6db2d515e64"
+﻿[
+  {
+    "_id": {
+      "$oid": "61bc5b66537c424e71fd739c"
+    },
+    "tenTK": "test",
+    "password": "$2a$10$nVweRXe/DYc1tlFxFLovge/m0lbYHIr7QuXaWPenq3b9.WcTV0Qvi",
+    "account": null,
+    "__v": 0,
+    "CCCD": "123123123",
+    "email": "concavang1@gmail.com",
+    "ngaySinh": "141232002",
+    "soTK": "123456",
+    "tenKH": "Halo"
   },
-  "tenKH": "Tat Tan Chu",
-  "tenTK": "tatchu6878",
-  "email": "tatchu6878@gmail.com",
-  "ngaySinh": "09/01/2001",
-  "CCCD": "07920100658",
-  "password": "1",
-  "account": "6194c1ca70f5e2377f107ca4",
-  "soTK": "194567162"
-},{
-  "_id": {
-    "$oid": "6199130acce0afbd73ed72ef"
+  {
+    "_id": {
+      "$oid": "61ba12ef06aebbeadd87e4ca"
+    },
+    "tenTK": "hoanguyen2121",
+    "password": "$2a$10$o1XZ00WJ6sSTvydjIpc87uaQPVLVyKUmPXySZey2u7NPbpRD00jbq",
+    "account": null,
+    "__v": 0
   },
-  "tenTK": "tatchu7890",
-  "password": "1234",
-  "__v": 0
-}]
+  {
+    "_id": {
+      "$oid": "61ba12d506aebbeadd87e4c6"
+    },
+    "tenTK": "hoanguyen7272",
+    "password": "$2a$10$EnVaUJ7xiVhn6PorVJaj4uXMStB5AXLcKImTvg0KeheJlN/YP7MLm",
+    "account": null,
+    "__v": 0,
+    "CCCD": "07920100658",
+    "email": "hoahuy2606@gmail.com",
+    "quyen": "adminmm",
+    "tenKH": "Nguyễn Huy Hoà"
+  },
+  {
+    "_id": {
+      "$oid": "61b946de23b1fc5388d82292"
+    },
+    "tenTK": "hoanguyen6611",
+    "password": "$2a$10$CECBQ0qSkO10xtqYQrsXZOHegKIkyxgal6WlWj5FrY1W19yZ2d9b6",
+    "account": {
+      "$oid": "61b94737df740dee64800791"
+    },
+    "__v": 0,
+    "CCCD": "187842193",
+    "email": "19119179@student.hcmute.edu.vn",
+    "ngaySinh": "26/06/2001",
+    "soTK": "03548874201",
+    "tenKH": "Nguyễn Huy Hoà"
+  },
+  {
+    "_id": {
+      "$oid": "61b8c3373c5b71bc8f90e563"
+    },
+    "tenTK": "tatchu6878",
+    "password": "$2a$10$rgM2qyF6JEbYVzm1i/YjGORDlvNz27PSyZPwHd4bvxJP0.NF5PabG",
+    "account": {
+      "$oid": "6194c1ca70f5e2377f107ca4"
+    },
+    "__v": 0,
+    "CCCD": "07920100658",
+    "email": "tatchu6878@gmail.com",
+    "ngaySinh": "09/01/2021",
+    "soTK": "194567162",
+    "tenKH": "Tất Tân Chu"
+  },
+  {
+    "_id": {
+      "$oid": "61b8b943b98be9a311be30f4"
+    },
+    "tenTK": "hoanguyen2661",
+    "password": "$2a$10$su6.jVV26GZgemHXD7meb.5OsAjF65ClLxq28MD0WKL.9K0iHWV/C",
+    "account": {
+      "$oid": "61977573a599b6db2d515e73"
+    },
+    "__v": 0,
+    "CCCD": "187842193",
+    "email": "hoahuy2606@gmail.com",
+    "ngaySinh": "26/06/2001",
+    "soTK": "123456789",
+    "tenKH": "Nguyễn Huy Hoà",
+    "quyen": "Admin"
+  }
+]

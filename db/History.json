@@ -1,182 +1,98 @@
 [{
   "_id": {
-    "$oid": "61a6f1f9814d5b61c3af0524"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2001-10-11T17:00:00Z"
-  }
-},{
-  "_id": {
-    "$oid": "61a6fd98e799b41746fb2e89"
-  },
-  "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T04:44:08.075Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a6fe896a0d8d3acf6cf587"
+    "$oid": "61ba17d706aebbeadd87e51c"
   },
   "trangThai": "Đã tất toán",
-  "soTien": 100000,
+  "soTien": 80000000,
   "thoiGian": {
-    "$date": "2021-12-01T04:48:09.773Z"
+    "$date": "2021-12-15T16:29:11.332Z"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b946de23b1fc5388d82292"
   },
   "__v": 0
-},{
+},
+{
   "_id": {
-    "$oid": "61a716d92e169c3cce8e1951"
+    "$oid": "61ba17cd06aebbeadd87e501"
   },
   "trangThai": "Đã gửi tiết kiệm",
   "soTien": 100000,
   "thoiGian": {
-    "$date": "2021-12-01T06:31:53.997Z"
+    "$date": "2021-12-15T16:29:01.377Z"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b946de23b1fc5388d82292"
   },
   "__v": 0
-},{
+},
+{
   "_id": {
-    "$oid": "61a716e22e169c3cce8e196d"
+    "$oid": "61b99efc76df65c5c6b2e276"
+  },
+  "trangThai": "Đã gửi tiết kiệm",
+  "soTien": 80000000,
+  "thoiGian": {
+    "$date": "2021-12-15T07:53:32.295Z"
+  },
+  "customer": {
+    "$oid": "61b946de23b1fc5388d82292"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "61b947b423b1fc5388d822aa"
+  },
+  "trangThai": "Đã gửi tiết kiệm",
+  "soTien": 20000000,
+  "thoiGian": {
+    "$date": "2021-12-15T01:41:08.306Z"
+  },
+  "customer": {
+    "$oid": "61b946de23b1fc5388d82292"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "61b8c3cc3c5b71bc8f90e58d"
+  },
+  "trangThai": "Đã gửi tiết kiệm",
+  "soTien": 500000,
+  "thoiGian": {
+    "$date": "2021-12-14T16:18:20.922Z"
+  },
+  "customer": {
+    "$oid": "61b8c3373c5b71bc8f90e563"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "61b8bb70b98be9a311be3154"
   },
   "trangThai": "Đã tất toán",
-  "soTien": 100000,
+  "soTien": 5000000,
   "thoiGian": {
-    "$date": "2021-12-01T06:32:02.513Z"
+    "$date": "2021-12-14T15:42:40.580Z"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b8b943b98be9a311be30f4"
   },
   "__v": 0
-},{
+},
+{
   "_id": {
-    "$oid": "61a717d66a1f7e654c8027c6"
-  },
-  "trangThai": "Đã tất toán",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T06:36:06.741Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a71876a94a8fcbe8397aca"
+    "$oid": "61b8bb64b98be9a311be3139"
   },
   "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
+  "soTien": 5000000,
   "thoiGian": {
-    "$date": "2021-12-01T06:38:46.815Z"
+    "$date": "2021-12-14T15:42:28.947Z"
   },
   "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a71880a94a8fcbe8397aef"
-  },
-  "trangThai": "Đã tất toán",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T06:38:56.490Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a7190d03e0324c3b174310"
-  },
-  "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T06:41:17.054Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a7191103e0324c3b17432b"
-  },
-  "trangThai": "Đã tất toán",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T06:41:21.529Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a71f0e43d733d6664e4549"
-  },
-  "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T07:06:54.366Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a71fd243d733d6664e4575"
-  },
-  "trangThai": "Đã tất toán",
-  "soTien": 100008.24,
-  "thoiGian": {
-    "$date": "2021-12-01T07:10:10.105Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a7209843d733d6664e463b"
-  },
-  "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T07:13:28.692Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "61a720a543d733d6664e4652"
-  },
-  "trangThai": "Đã gửi tiết kiệm",
-  "soTien": 100000,
-  "thoiGian": {
-    "$date": "2021-12-01T07:13:41.823Z"
-  },
-  "customer": {
-    "$oid": "61977307a599b6db2d515e64"
+    "$oid": "61b8b943b98be9a311be30f4"
   },
   "__v": 0
 }]
