@@ -19,6 +19,8 @@
 - npm install mongoose-slug-generator
 - npm install morgan
 - npm install node-cron
+- npm install nodemailer
+- npm install paypal-rest-sdk
 3. chạy lệnh npm run watch - Để tạo file css (không cần thiết lắm).
 4. npm start - Để chạy localhost
 5. test đi rồi cho feedback :) 
