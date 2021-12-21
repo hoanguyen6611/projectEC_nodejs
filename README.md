@@ -12,6 +12,13 @@
 - npm install node-cron
 - npm install mongoose
 - npm install nodemon
+- npm install bcryptjs
+- npm install jsonwebtoken
+- npm install lint-staged
+- npm install method-override
+- npm install mongoose-slug-generator
+- npm install morgan
+- npm install node-cron
 3. chạy lệnh npm run watch - Để tạo file css (không cần thiết lắm).
 4. npm start - Để chạy localhost
 5. test đi rồi cho feedback :) 
