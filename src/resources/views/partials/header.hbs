@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img
-        src="https://res.cloudinary.com/dxd5emviu/image/upload/v1639043564/logoec_cf5s1l.png" alt=""
-        class="icon-logo"></a>
+    <a class="navbar-brand"><img src="https://res.cloudinary.com/dxd5emviu/image/upload/v1639043564/logoec_cf5s1l.png"
+        alt="" class="icon-logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,7 +27,7 @@
         {{else}}
         {{#if tenTK}}
         <li class="nav-item">
-          <a href="/" class="nav-link fix"><img
+          <a href="/home/" class="nav-link fix"><img
               src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636773689/3643769_building_home_house_main_menu_icon_aslqav.png"
               class="icon mr-2">Trang chủ</a>
         </li>
@@ -52,17 +51,17 @@
               src="https://res.cloudinary.com/dxd5emviu/image/upload/v1636774198/352426_history_icon_hmtqo2.png"
               class="icon mr-2">Lịch sử</a>
         </li>
+        {{#if Admin}}
+        {{else}}
+        <li class="">
+          <a href="" class="btn" data-toggle="modal" data-target="#search" data-id="" title="Tìm kiếm"><i
+              class="fas fa-search"></i></a>
+        </li>
+        {{/if}}
       </ul>
       {{/if}}
       {{/if}}
       {{#if tenTK}}
-      {{#if Admin}}
-      {{else}}
-      <div class="">
-        <a href="" class="btn" data-toggle="modal" data-target="#search" data-id="" title="Tìm kiếm"><i
-            class="fas fa-search"></i></a>
-      </div>
-      {{/if}}
       {{else}}
       <div class="fix-4">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 fix-3 mb-4">
@@ -90,7 +89,8 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/customer/resetPassword">Đổi mật khẩu</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/customer/showInfomationOfAccount">Cập nhật thông tin</a>
+            <a class="dropdown-item" href="https://www.facebook.com/AHC-saving-deposit-system-105032425382546">Liên
+              hệ</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/customer/logOut">Đăng xuất</a>
           </div>
@@ -105,7 +105,7 @@
       <div class="modal-body">
         <form action="/search" method="get">
           <div class="input-group size-search">
-            <input type="text" name="searchse" class="form-control" id="search-input" placeholder="Tìm kiếm ...">
+            <input type="text" name="searchse" class="form-control fix" id="search-input" placeholder="Tìm kiếm ...">
             <div class="input-group-append">
               <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
             </div>

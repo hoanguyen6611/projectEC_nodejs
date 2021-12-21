@@ -50,6 +50,10 @@ class SiteController {
             })
 
     }
+    //[GET] /search
+    home(req, res, next){
+        res.render('customer/accountme')
+    }
 }
 //Public ra ngoài
 module.exports = new SiteController();

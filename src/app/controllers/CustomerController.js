@@ -145,14 +145,14 @@ class CustomerController {
                         res.cookie('token', customer.tenTK + "/" + token + "/" + Admin,
                             { expires: new Date(Date.now() + 24 * 3600000) });
                         if (Admin == true) {
-                            res.render('home', {
+                            res.render('customer/accountme', {
                                 tenTK: tenTK,
                                 Admin: Admin,
                                 tenKH: tenKH,
                             })
                         }
                         else {
-                            res.render('home', {
+                            res.render('customer/accountme', {
                                 tenTK: tenTK,
                                 tenKH: tenKH,
                             })
